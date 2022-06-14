@@ -1,0 +1,2514 @@
+Namespace(K=1, N=5, active_random=0, batch_size=100, batch_size_test=10, cuda=True, dataset='miniImagenet', dataset_root='pretrain', dec_lr=10000, decay_interval=10000, exp_name='minimagenet_N5_S1', iterations=40000, log_interval=20, lr=0.005, metric_network='gnn_iclr_nl', mode='train', momentum=0.5, save_interval=10000, seed=1, test_N_shots=1, test_N_way=5, test_interval=2000, test_samples=10000, train_N_shots=1, train_N_way=5, unlabeled_extra=0)
+Batch size: 100
+Initiallize new Network Weights for enc_nn
+Initiallize new Network Weights for metric_nn
+EmbeddingImagenet(
+  (conv1): Conv2D(3, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+  (bn1): BatchNorm2D(num_features=64, momentum=0.9, epsilon=1e-05)
+  (conv2): Conv2D(64, 96, kernel_size=[3, 3], data_format=NCHW)
+  (bn2): BatchNorm2D(num_features=96, momentum=0.9, epsilon=1e-05)
+  (conv3): Conv2D(96, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+  (bn3): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+  (drop_3): Dropout2D(p=0.4, data_format=NCHW)
+  (conv4): Conv2D(128, 256, kernel_size=[3, 3], padding=1, data_format=NCHW)
+  (bn4): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+  (drop_4): Dropout2D(p=0.5, data_format=NCHW)
+  (fc1): Linear(in_features=6400, out_features=128, dtype=float32)
+  (bn_fc): BatchNorm1D(num_features=128, momentum=0.9, epsilon=1e-05, data_format=NCL)
+)
+MetricNN(
+  (gnn_obj): GNN_nl(
+    (layers): LayerDict(
+      (layer_w0): Wcompute(
+        (conv2d_1): Conv2D(133, 192, kernel_size=[1, 1], data_format=NCHW)
+        (bn_1): BatchNorm2D(num_features=192, momentum=0.9, epsilon=1e-05)
+        (conv2d_2): Conv2D(192, 192, kernel_size=[1, 1], data_format=NCHW)
+        (bn_2): BatchNorm2D(num_features=192, momentum=0.9, epsilon=1e-05)
+        (conv2d_3): Conv2D(192, 96, kernel_size=[1, 1], data_format=NCHW)
+        (bn_3): BatchNorm2D(num_features=96, momentum=0.9, epsilon=1e-05)
+        (conv2d_4): Conv2D(96, 96, kernel_size=[1, 1], data_format=NCHW)
+        (bn_4): BatchNorm2D(num_features=96, momentum=0.9, epsilon=1e-05)
+        (conv2d_last): Conv2D(96, 1, kernel_size=[1, 1], data_format=NCHW)
+      )
+      (layer_l0): Gconv(
+        (fc): Linear(in_features=266, out_features=48, dtype=float32)
+        (bn): BatchNorm1D(num_features=48, momentum=0.9, epsilon=1e-05, data_format=NCL)
+      )
+      (layer_w1): Wcompute(
+        (conv2d_1): Conv2D(181, 192, kernel_size=[1, 1], data_format=NCHW)
+        (bn_1): BatchNorm2D(num_features=192, momentum=0.9, epsilon=1e-05)
+        (conv2d_2): Conv2D(192, 192, kernel_size=[1, 1], data_format=NCHW)
+        (bn_2): BatchNorm2D(num_features=192, momentum=0.9, epsilon=1e-05)
+        (conv2d_3): Conv2D(192, 96, kernel_size=[1, 1], data_format=NCHW)
+        (bn_3): BatchNorm2D(num_features=96, momentum=0.9, epsilon=1e-05)
+        (conv2d_4): Conv2D(96, 96, kernel_size=[1, 1], data_format=NCHW)
+        (bn_4): BatchNorm2D(num_features=96, momentum=0.9, epsilon=1e-05)
+        (conv2d_last): Conv2D(96, 1, kernel_size=[1, 1], data_format=NCHW)
+      )
+      (layer_l1): Gconv(
+        (fc): Linear(in_features=362, out_features=48, dtype=float32)
+        (bn): BatchNorm1D(num_features=48, momentum=0.9, epsilon=1e-05, data_format=NCL)
+      )
+    )
+    (w_comp_last): Wcompute(
+      (conv2d_1): Conv2D(229, 192, kernel_size=[1, 1], data_format=NCHW)
+      (bn_1): BatchNorm2D(num_features=192, momentum=0.9, epsilon=1e-05)
+      (conv2d_2): Conv2D(192, 192, kernel_size=[1, 1], data_format=NCHW)
+      (bn_2): BatchNorm2D(num_features=192, momentum=0.9, epsilon=1e-05)
+      (conv2d_3): Conv2D(192, 96, kernel_size=[1, 1], data_format=NCHW)
+      (bn_3): BatchNorm2D(num_features=96, momentum=0.9, epsilon=1e-05)
+      (conv2d_4): Conv2D(96, 96, kernel_size=[1, 1], data_format=NCHW)
+      (bn_4): BatchNorm2D(num_features=96, momentum=0.9, epsilon=1e-05)
+      (conv2d_last): Conv2D(96, 1, kernel_size=[1, 1], data_format=NCHW)
+    )
+    (layer_last): Gconv(
+      (fc): Linear(in_features=458, out_features=5, dtype=float32)
+    )
+  )
+)
+Train Iter: 0	Loss_d_metric: 1.823996
+Train Iter: 20	Loss_d_metric: 1.952223
+
+**** TESTING WITH val ***
+103 correct from 500 	Accuracy: 20.600%)
+*** TEST FINISHED ***
+
+Best test accuracy 20.6000 
+
+Train Iter: 40	Loss_d_metric: 1.729640
+Train Iter: 60	Loss_d_metric: 1.688507
+Train Iter: 80	Loss_d_metric: 1.679574
+Train Iter: 100	Loss_d_metric: 1.664060
+Train Iter: 120	Loss_d_metric: 1.664026
+Train Iter: 140	Loss_d_metric: 1.671340
+Train Iter: 160	Loss_d_metric: 1.660454
+Train Iter: 180	Loss_d_metric: 1.648451
+Train Iter: 200	Loss_d_metric: 1.652469
+Train Iter: 220	Loss_d_metric: 1.642748
+Train Iter: 240	Loss_d_metric: 1.660092
+Train Iter: 260	Loss_d_metric: 1.651122
+Train Iter: 280	Loss_d_metric: 1.664272
+Train Iter: 300	Loss_d_metric: 1.660639
+Train Iter: 320	Loss_d_metric: 1.641905
+Train Iter: 340	Loss_d_metric: 1.646834
+Train Iter: 360	Loss_d_metric: 1.633009
+Train Iter: 380	Loss_d_metric: 1.641172
+Train Iter: 400	Loss_d_metric: 1.648693
+Train Iter: 420	Loss_d_metric: 1.633117
+Train Iter: 440	Loss_d_metric: 1.620256
+Train Iter: 460	Loss_d_metric: 1.632156
+Train Iter: 480	Loss_d_metric: 1.627004
+Train Iter: 500	Loss_d_metric: 1.630945
+Train Iter: 520	Loss_d_metric: 1.618067
+Train Iter: 540	Loss_d_metric: 1.612194
+Train Iter: 560	Loss_d_metric: 1.628364
+Train Iter: 580	Loss_d_metric: 1.614367
+Train Iter: 600	Loss_d_metric: 1.612876
+Train Iter: 620	Loss_d_metric: 1.633215
+Train Iter: 640	Loss_d_metric: 1.626022
+Train Iter: 660	Loss_d_metric: 1.607740
+Train Iter: 680	Loss_d_metric: 1.595133
+Train Iter: 700	Loss_d_metric: 1.607124
+Train Iter: 720	Loss_d_metric: 1.599338
+Train Iter: 740	Loss_d_metric: 1.604314
+Train Iter: 760	Loss_d_metric: 1.598465
+Train Iter: 780	Loss_d_metric: 1.588360
+Train Iter: 800	Loss_d_metric: 1.600540
+Train Iter: 820	Loss_d_metric: 1.580042
+Train Iter: 840	Loss_d_metric: 1.572124
+Train Iter: 860	Loss_d_metric: 1.570745
+Train Iter: 880	Loss_d_metric: 1.592740
+Train Iter: 900	Loss_d_metric: 1.575780
+Train Iter: 920	Loss_d_metric: 1.586553
+Train Iter: 940	Loss_d_metric: 1.572387
+Train Iter: 960	Loss_d_metric: 1.569697
+Train Iter: 980	Loss_d_metric: 1.560219
+Train Iter: 1000	Loss_d_metric: 1.557537
+Train Iter: 1020	Loss_d_metric: 1.553809
+Train Iter: 1040	Loss_d_metric: 1.552945
+Train Iter: 1060	Loss_d_metric: 1.557639
+Train Iter: 1080	Loss_d_metric: 1.551797
+Train Iter: 1100	Loss_d_metric: 1.538699
+Train Iter: 1120	Loss_d_metric: 1.538640
+Train Iter: 1140	Loss_d_metric: 1.550248
+Train Iter: 1160	Loss_d_metric: 1.541438
+Train Iter: 1180	Loss_d_metric: 1.539670
+Train Iter: 1200	Loss_d_metric: 1.515951
+Train Iter: 1220	Loss_d_metric: 1.517120
+Train Iter: 1240	Loss_d_metric: 1.526154
+Train Iter: 1260	Loss_d_metric: 1.519012
+Train Iter: 1280	Loss_d_metric: 1.525955
+Train Iter: 1300	Loss_d_metric: 1.522186
+Train Iter: 1320	Loss_d_metric: 1.519953
+Train Iter: 1340	Loss_d_metric: 1.503233
+Train Iter: 1360	Loss_d_metric: 1.511913
+Train Iter: 1380	Loss_d_metric: 1.512374
+Train Iter: 1400	Loss_d_metric: 1.519904
+Train Iter: 1420	Loss_d_metric: 1.509918
+Train Iter: 1440	Loss_d_metric: 1.502611
+Train Iter: 1460	Loss_d_metric: 1.498645
+Train Iter: 1480	Loss_d_metric: 1.493907
+Train Iter: 1500	Loss_d_metric: 1.509487
+Train Iter: 1520	Loss_d_metric: 1.493781
+Train Iter: 1540	Loss_d_metric: 1.494717
+Train Iter: 1560	Loss_d_metric: 1.503830
+Train Iter: 1580	Loss_d_metric: 1.507311
+Train Iter: 1600	Loss_d_metric: 1.495275
+Train Iter: 1620	Loss_d_metric: 1.500457
+Train Iter: 1640	Loss_d_metric: 1.487353
+Train Iter: 1660	Loss_d_metric: 1.472482
+Train Iter: 1680	Loss_d_metric: 1.480188
+Train Iter: 1700	Loss_d_metric: 1.468788
+Train Iter: 1720	Loss_d_metric: 1.500563
+Train Iter: 1740	Loss_d_metric: 1.474969
+Train Iter: 1760	Loss_d_metric: 1.486994
+Train Iter: 1780	Loss_d_metric: 1.465215
+Train Iter: 1800	Loss_d_metric: 1.458938
+Train Iter: 1820	Loss_d_metric: 1.488898
+Train Iter: 1840	Loss_d_metric: 1.471049
+Train Iter: 1860	Loss_d_metric: 1.485055
+Train Iter: 1880	Loss_d_metric: 1.440136
+Train Iter: 1900	Loss_d_metric: 1.476834
+Train Iter: 1920	Loss_d_metric: 1.457959
+Train Iter: 1940	Loss_d_metric: 1.455628
+Train Iter: 1960	Loss_d_metric: 1.430156
+Train Iter: 1980	Loss_d_metric: 1.457576
+
+**** TESTING WITH val ***
+312 correct from 1000 	Accuracy: 31.200%)
+650 correct from 2000 	Accuracy: 32.500%)
+962 correct from 3000 	Accuracy: 32.067%)
+1303 correct from 4000 	Accuracy: 32.575%)
+1637 correct from 5000 	Accuracy: 32.740%)
+1961 correct from 6000 	Accuracy: 32.683%)
+2309 correct from 7000 	Accuracy: 32.986%)
+2620 correct from 8000 	Accuracy: 32.750%)
+2942 correct from 9000 	Accuracy: 32.689%)
+3268 correct from 10000 	Accuracy: 32.680%)
+3599 correct from 11000 	Accuracy: 32.718%)
+3932 correct from 12000 	Accuracy: 32.767%)
+4268 correct from 13000 	Accuracy: 32.831%)
+4601 correct from 14000 	Accuracy: 32.864%)
+4929 correct from 15000 	Accuracy: 32.860%)
+4929 correct from 15000 	Accuracy: 32.860%)
+*** TEST FINISHED ***
+
+Best test accuracy 32.8600 
+
+Train Iter: 2000	Loss_d_metric: 1.464482
+Train Iter: 2020	Loss_d_metric: 1.484396
+Train Iter: 2040	Loss_d_metric: 1.451009
+Train Iter: 2060	Loss_d_metric: 1.463067
+Train Iter: 2080	Loss_d_metric: 1.433046
+Train Iter: 2100	Loss_d_metric: 1.447834
+Train Iter: 2120	Loss_d_metric: 1.460858
+Train Iter: 2140	Loss_d_metric: 1.441441
+Train Iter: 2160	Loss_d_metric: 1.428381
+Train Iter: 2180	Loss_d_metric: 1.442865
+Train Iter: 2200	Loss_d_metric: 1.437830
+Train Iter: 2220	Loss_d_metric: 1.429363
+Train Iter: 2240	Loss_d_metric: 1.436613
+Train Iter: 2260	Loss_d_metric: 1.444029
+Train Iter: 2280	Loss_d_metric: 1.440865
+Train Iter: 2300	Loss_d_metric: 1.419787
+Train Iter: 2320	Loss_d_metric: 1.432589
+Train Iter: 2340	Loss_d_metric: 1.413762
+Train Iter: 2360	Loss_d_metric: 1.425480
+Train Iter: 2380	Loss_d_metric: 1.409739
+Train Iter: 2400	Loss_d_metric: 1.410791
+Train Iter: 2420	Loss_d_metric: 1.398061
+Train Iter: 2440	Loss_d_metric: 1.425753
+Train Iter: 2460	Loss_d_metric: 1.413115
+Train Iter: 2480	Loss_d_metric: 1.414746
+Train Iter: 2500	Loss_d_metric: 1.414341
+Train Iter: 2520	Loss_d_metric: 1.402346
+Train Iter: 2540	Loss_d_metric: 1.395988
+Train Iter: 2560	Loss_d_metric: 1.418990
+Train Iter: 2580	Loss_d_metric: 1.397615
+Train Iter: 2600	Loss_d_metric: 1.390428
+Train Iter: 2620	Loss_d_metric: 1.390583
+Train Iter: 2640	Loss_d_metric: 1.431520
+Train Iter: 2660	Loss_d_metric: 1.391664
+Train Iter: 2680	Loss_d_metric: 1.417737
+Train Iter: 2700	Loss_d_metric: 1.390766
+Train Iter: 2720	Loss_d_metric: 1.380462
+Train Iter: 2740	Loss_d_metric: 1.368308
+Train Iter: 2760	Loss_d_metric: 1.405307
+Train Iter: 2780	Loss_d_metric: 1.381000
+Train Iter: 2800	Loss_d_metric: 1.379780
+Train Iter: 2820	Loss_d_metric: 1.403497
+Train Iter: 2840	Loss_d_metric: 1.394157
+Train Iter: 2860	Loss_d_metric: 1.392887
+Train Iter: 2880	Loss_d_metric: 1.360241
+Train Iter: 2900	Loss_d_metric: 1.403846
+Train Iter: 2920	Loss_d_metric: 1.367993
+Train Iter: 2940	Loss_d_metric: 1.384901
+Train Iter: 2960	Loss_d_metric: 1.384757
+Train Iter: 2980	Loss_d_metric: 1.370033
+Train Iter: 3000	Loss_d_metric: 1.383735
+Train Iter: 3020	Loss_d_metric: 1.384185
+Train Iter: 3040	Loss_d_metric: 1.390860
+Train Iter: 3060	Loss_d_metric: 1.375024
+Train Iter: 3080	Loss_d_metric: 1.367469
+Train Iter: 3100	Loss_d_metric: 1.392346
+Train Iter: 3120	Loss_d_metric: 1.356575
+Train Iter: 3140	Loss_d_metric: 1.356943
+Train Iter: 3160	Loss_d_metric: 1.349933
+Train Iter: 3180	Loss_d_metric: 1.362090
+Train Iter: 3200	Loss_d_metric: 1.364172
+Train Iter: 3220	Loss_d_metric: 1.354273
+Train Iter: 3240	Loss_d_metric: 1.325982
+Train Iter: 3260	Loss_d_metric: 1.356933
+Train Iter: 3280	Loss_d_metric: 1.345056
+Train Iter: 3300	Loss_d_metric: 1.343021
+Train Iter: 3320	Loss_d_metric: 1.327596
+Train Iter: 3340	Loss_d_metric: 1.309812
+Train Iter: 3360	Loss_d_metric: 1.343371
+Train Iter: 3380	Loss_d_metric: 1.368917
+Train Iter: 3400	Loss_d_metric: 1.331205
+Train Iter: 3420	Loss_d_metric: 1.330267
+Train Iter: 3440	Loss_d_metric: 1.324961
+Train Iter: 3460	Loss_d_metric: 1.330189
+Train Iter: 3480	Loss_d_metric: 1.336385
+Train Iter: 3500	Loss_d_metric: 1.328726
+Train Iter: 3520	Loss_d_metric: 1.327142
+Train Iter: 3540	Loss_d_metric: 1.291497
+Train Iter: 3560	Loss_d_metric: 1.340233
+Train Iter: 3580	Loss_d_metric: 1.330666
+Train Iter: 3600	Loss_d_metric: 1.346228
+Train Iter: 3620	Loss_d_metric: 1.319775
+Train Iter: 3640	Loss_d_metric: 1.344568
+Train Iter: 3660	Loss_d_metric: 1.303693
+Train Iter: 3680	Loss_d_metric: 1.357778
+Train Iter: 3700	Loss_d_metric: 1.335932
+Train Iter: 3720	Loss_d_metric: 1.309168
+Train Iter: 3740	Loss_d_metric: 1.310473
+Train Iter: 3760	Loss_d_metric: 1.328497
+Train Iter: 3780	Loss_d_metric: 1.312782
+Train Iter: 3800	Loss_d_metric: 1.282433
+Train Iter: 3820	Loss_d_metric: 1.317452
+Train Iter: 3840	Loss_d_metric: 1.331636
+Train Iter: 3860	Loss_d_metric: 1.282300
+Train Iter: 3880	Loss_d_metric: 1.311701
+Train Iter: 3900	Loss_d_metric: 1.324739
+Train Iter: 3920	Loss_d_metric: 1.324811
+Train Iter: 3940	Loss_d_metric: 1.269407
+Train Iter: 3960	Loss_d_metric: 1.291675
+Train Iter: 3980	Loss_d_metric: 1.300662
+
+**** TESTING WITH val ***
+418 correct from 1000 	Accuracy: 41.800%)
+813 correct from 2000 	Accuracy: 40.650%)
+1224 correct from 3000 	Accuracy: 40.800%)
+1635 correct from 4000 	Accuracy: 40.875%)
+2021 correct from 5000 	Accuracy: 40.420%)
+2415 correct from 6000 	Accuracy: 40.250%)
+2803 correct from 7000 	Accuracy: 40.043%)
+3205 correct from 8000 	Accuracy: 40.062%)
+3609 correct from 9000 	Accuracy: 40.100%)
+4040 correct from 10000 	Accuracy: 40.400%)
+4466 correct from 11000 	Accuracy: 40.600%)
+4857 correct from 12000 	Accuracy: 40.475%)
+5244 correct from 13000 	Accuracy: 40.338%)
+5635 correct from 14000 	Accuracy: 40.250%)
+6050 correct from 15000 	Accuracy: 40.333%)
+6050 correct from 15000 	Accuracy: 40.333%)
+*** TEST FINISHED ***
+
+Best test accuracy 40.3333 
+
+Train Iter: 4000	Loss_d_metric: 1.300480
+Train Iter: 4020	Loss_d_metric: 1.308779
+Train Iter: 4040	Loss_d_metric: 1.310495
+Train Iter: 4060	Loss_d_metric: 1.295048
+Train Iter: 4080	Loss_d_metric: 1.282432
+Train Iter: 4100	Loss_d_metric: 1.276228
+Train Iter: 4120	Loss_d_metric: 1.287120
+Train Iter: 4140	Loss_d_metric: 1.270365
+Train Iter: 4160	Loss_d_metric: 1.308773
+Train Iter: 4180	Loss_d_metric: 1.288358
+Train Iter: 4200	Loss_d_metric: 1.301220
+Train Iter: 4220	Loss_d_metric: 1.290694
+Train Iter: 4240	Loss_d_metric: 1.242974
+Train Iter: 4260	Loss_d_metric: 1.287632
+Train Iter: 4280	Loss_d_metric: 1.284000
+Train Iter: 4300	Loss_d_metric: 1.291861
+Train Iter: 4320	Loss_d_metric: 1.300662
+Train Iter: 4340	Loss_d_metric: 1.321306
+Train Iter: 4360	Loss_d_metric: 1.278043
+Train Iter: 4380	Loss_d_metric: 1.276347
+Train Iter: 4400	Loss_d_metric: 1.302775
+Train Iter: 4420	Loss_d_metric: 1.298658
+Train Iter: 4440	Loss_d_metric: 1.284369
+Train Iter: 4460	Loss_d_metric: 1.297070
+Train Iter: 4480	Loss_d_metric: 1.271112
+Train Iter: 4500	Loss_d_metric: 1.280150
+Train Iter: 4520	Loss_d_metric: 1.281447
+Train Iter: 4540	Loss_d_metric: 1.262126
+Train Iter: 4560	Loss_d_metric: 1.316698
+Train Iter: 4580	Loss_d_metric: 1.281848
+Train Iter: 4600	Loss_d_metric: 1.323933
+Train Iter: 4620	Loss_d_metric: 1.253904
+Train Iter: 4640	Loss_d_metric: 1.295075
+Train Iter: 4660	Loss_d_metric: 1.262085
+Train Iter: 4680	Loss_d_metric: 1.253544
+Train Iter: 4700	Loss_d_metric: 1.276496
+Train Iter: 4720	Loss_d_metric: 1.247795
+Train Iter: 4740	Loss_d_metric: 1.267530
+Train Iter: 4760	Loss_d_metric: 1.266298
+Train Iter: 4780	Loss_d_metric: 1.245663
+Train Iter: 4800	Loss_d_metric: 1.262611
+Train Iter: 4820	Loss_d_metric: 1.262655
+Train Iter: 4840	Loss_d_metric: 1.245710
+Train Iter: 4860	Loss_d_metric: 1.253494
+Train Iter: 4880	Loss_d_metric: 1.229191
+Train Iter: 4900	Loss_d_metric: 1.248911
+Train Iter: 4920	Loss_d_metric: 1.262531
+Train Iter: 4940	Loss_d_metric: 1.229962
+Train Iter: 4960	Loss_d_metric: 1.233970
+Train Iter: 4980	Loss_d_metric: 1.237772
+Train Iter: 5000	Loss_d_metric: 1.238524
+Train Iter: 5020	Loss_d_metric: 1.232676
+Train Iter: 5040	Loss_d_metric: 1.210193
+Train Iter: 5060	Loss_d_metric: 1.242571
+Train Iter: 5080	Loss_d_metric: 1.234581
+Train Iter: 5100	Loss_d_metric: 1.222568
+Train Iter: 5120	Loss_d_metric: 1.220305
+Train Iter: 5140	Loss_d_metric: 1.249089
+Train Iter: 5160	Loss_d_metric: 1.214352
+Train Iter: 5180	Loss_d_metric: 1.208360
+Train Iter: 5200	Loss_d_metric: 1.205266
+Train Iter: 5220	Loss_d_metric: 1.240392
+Train Iter: 5240	Loss_d_metric: 1.245026
+Train Iter: 5260	Loss_d_metric: 1.171980
+Train Iter: 5280	Loss_d_metric: 1.215200
+Train Iter: 5300	Loss_d_metric: 1.237678
+Train Iter: 5320	Loss_d_metric: 1.236851
+Train Iter: 5340	Loss_d_metric: 1.218869
+Train Iter: 5360	Loss_d_metric: 1.236853
+Train Iter: 5380	Loss_d_metric: 1.221180
+Train Iter: 5400	Loss_d_metric: 1.235039
+Train Iter: 5420	Loss_d_metric: 1.237671
+Train Iter: 5440	Loss_d_metric: 1.231353
+Train Iter: 5460	Loss_d_metric: 1.222515
+Train Iter: 5480	Loss_d_metric: 1.225218
+Train Iter: 5500	Loss_d_metric: 1.224377
+Train Iter: 5520	Loss_d_metric: 1.239906
+Train Iter: 5540	Loss_d_metric: 1.217450
+Train Iter: 5560	Loss_d_metric: 1.227441
+Train Iter: 5580	Loss_d_metric: 1.183351
+Train Iter: 5600	Loss_d_metric: 1.187067
+Train Iter: 5620	Loss_d_metric: 1.187973
+Train Iter: 5640	Loss_d_metric: 1.202209
+Train Iter: 5660	Loss_d_metric: 1.229548
+Train Iter: 5680	Loss_d_metric: 1.232332
+Train Iter: 5700	Loss_d_metric: 1.203184
+Train Iter: 5720	Loss_d_metric: 1.202520
+Train Iter: 5740	Loss_d_metric: 1.188744
+Train Iter: 5760	Loss_d_metric: 1.217805
+Train Iter: 5780	Loss_d_metric: 1.213853
+Train Iter: 5800	Loss_d_metric: 1.216073
+Train Iter: 5820	Loss_d_metric: 1.221072
+Train Iter: 5840	Loss_d_metric: 1.221528
+Train Iter: 5860	Loss_d_metric: 1.183537
+Train Iter: 5880	Loss_d_metric: 1.189509
+Train Iter: 5900	Loss_d_metric: 1.187056
+Train Iter: 5920	Loss_d_metric: 1.197477
+Train Iter: 5940	Loss_d_metric: 1.182650
+Train Iter: 5960	Loss_d_metric: 1.176836
+Train Iter: 5980	Loss_d_metric: 1.177283
+
+**** TESTING WITH val ***
+419 correct from 1000 	Accuracy: 41.900%)
+867 correct from 2000 	Accuracy: 43.350%)
+1301 correct from 3000 	Accuracy: 43.367%)
+1762 correct from 4000 	Accuracy: 44.050%)
+2191 correct from 5000 	Accuracy: 43.820%)
+2612 correct from 6000 	Accuracy: 43.533%)
+3063 correct from 7000 	Accuracy: 43.757%)
+3505 correct from 8000 	Accuracy: 43.812%)
+3958 correct from 9000 	Accuracy: 43.978%)
+4401 correct from 10000 	Accuracy: 44.010%)
+4850 correct from 11000 	Accuracy: 44.091%)
+5302 correct from 12000 	Accuracy: 44.183%)
+5732 correct from 13000 	Accuracy: 44.092%)
+6172 correct from 14000 	Accuracy: 44.086%)
+6618 correct from 15000 	Accuracy: 44.120%)
+6618 correct from 15000 	Accuracy: 44.120%)
+*** TEST FINISHED ***
+
+Best test accuracy 44.1200 
+
+Train Iter: 6000	Loss_d_metric: 1.210488
+Train Iter: 6020	Loss_d_metric: 1.176706
+Train Iter: 6040	Loss_d_metric: 1.187741
+Train Iter: 6060	Loss_d_metric: 1.198278
+Train Iter: 6080	Loss_d_metric: 1.191787
+Train Iter: 6100	Loss_d_metric: 1.202777
+Train Iter: 6120	Loss_d_metric: 1.171863
+Train Iter: 6140	Loss_d_metric: 1.179204
+Train Iter: 6160	Loss_d_metric: 1.162913
+Train Iter: 6180	Loss_d_metric: 1.211571
+Train Iter: 6200	Loss_d_metric: 1.213148
+Train Iter: 6220	Loss_d_metric: 1.180575
+Train Iter: 6240	Loss_d_metric: 1.164887
+Train Iter: 6260	Loss_d_metric: 1.170128
+Train Iter: 6280	Loss_d_metric: 1.197289
+Train Iter: 6300	Loss_d_metric: 1.168254
+Train Iter: 6320	Loss_d_metric: 1.144325
+Train Iter: 6340	Loss_d_metric: 1.188335
+Train Iter: 6360	Loss_d_metric: 1.177464
+Train Iter: 6380	Loss_d_metric: 1.208390
+Train Iter: 6400	Loss_d_metric: 1.184066
+Train Iter: 6420	Loss_d_metric: 1.163956
+Train Iter: 6440	Loss_d_metric: 1.163599
+Train Iter: 6460	Loss_d_metric: 1.165753
+Train Iter: 6480	Loss_d_metric: 1.162592
+Train Iter: 6500	Loss_d_metric: 1.137415
+Train Iter: 6520	Loss_d_metric: 1.193639
+Train Iter: 6540	Loss_d_metric: 1.146196
+Train Iter: 6560	Loss_d_metric: 1.136370
+Train Iter: 6580	Loss_d_metric: 1.166529
+Train Iter: 6600	Loss_d_metric: 1.154571
+Train Iter: 6620	Loss_d_metric: 1.137746
+Train Iter: 6640	Loss_d_metric: 1.133967
+Train Iter: 6660	Loss_d_metric: 1.152300
+Train Iter: 6680	Loss_d_metric: 1.141255
+Train Iter: 6700	Loss_d_metric: 1.167252
+Train Iter: 6720	Loss_d_metric: 1.130599
+Train Iter: 6740	Loss_d_metric: 1.145874
+Train Iter: 6760	Loss_d_metric: 1.141926
+Train Iter: 6780	Loss_d_metric: 1.161496
+Train Iter: 6800	Loss_d_metric: 1.138538
+Train Iter: 6820	Loss_d_metric: 1.132977
+Train Iter: 6840	Loss_d_metric: 1.153999
+Train Iter: 6860	Loss_d_metric: 1.149311
+Train Iter: 6880	Loss_d_metric: 1.144167
+Train Iter: 6900	Loss_d_metric: 1.138246
+Train Iter: 6920	Loss_d_metric: 1.157592
+Train Iter: 6940	Loss_d_metric: 1.132577
+Train Iter: 6960	Loss_d_metric: 1.130489
+Train Iter: 6980	Loss_d_metric: 1.124039
+Train Iter: 7000	Loss_d_metric: 1.132461
+Train Iter: 7020	Loss_d_metric: 1.156606
+Train Iter: 7040	Loss_d_metric: 1.127114
+Train Iter: 7060	Loss_d_metric: 1.102523
+Train Iter: 7080	Loss_d_metric: 1.153751
+Train Iter: 7100	Loss_d_metric: 1.126306
+Train Iter: 7120	Loss_d_metric: 1.160526
+Train Iter: 7140	Loss_d_metric: 1.161820
+Train Iter: 7160	Loss_d_metric: 1.146828
+Train Iter: 7180	Loss_d_metric: 1.146541
+Train Iter: 7200	Loss_d_metric: 1.129570
+Train Iter: 7220	Loss_d_metric: 1.163489
+Train Iter: 7240	Loss_d_metric: 1.152538
+Train Iter: 7260	Loss_d_metric: 1.123369
+Train Iter: 7280	Loss_d_metric: 1.164504
+Train Iter: 7300	Loss_d_metric: 1.131050
+Train Iter: 7320	Loss_d_metric: 1.138494
+Train Iter: 7340	Loss_d_metric: 1.146143
+Train Iter: 7360	Loss_d_metric: 1.133727
+Train Iter: 7380	Loss_d_metric: 1.124609
+Train Iter: 7400	Loss_d_metric: 1.151099
+Train Iter: 7420	Loss_d_metric: 1.143217
+Train Iter: 7440	Loss_d_metric: 1.127994
+Train Iter: 7460	Loss_d_metric: 1.085130
+Train Iter: 7480	Loss_d_metric: 1.151837
+Train Iter: 7500	Loss_d_metric: 1.145779
+Train Iter: 7520	Loss_d_metric: 1.120572
+Train Iter: 7540	Loss_d_metric: 1.135868
+Train Iter: 7560	Loss_d_metric: 1.110779
+Train Iter: 7580	Loss_d_metric: 1.116923
+Train Iter: 7600	Loss_d_metric: 1.116298
+Train Iter: 7620	Loss_d_metric: 1.134999
+Train Iter: 7640	Loss_d_metric: 1.098344
+Train Iter: 7660	Loss_d_metric: 1.155594
+Train Iter: 7680	Loss_d_metric: 1.115237
+Train Iter: 7700	Loss_d_metric: 1.109063
+Train Iter: 7720	Loss_d_metric: 1.106708
+Train Iter: 7740	Loss_d_metric: 1.107708
+Train Iter: 7760	Loss_d_metric: 1.117225
+Train Iter: 7780	Loss_d_metric: 1.106406
+Train Iter: 7800	Loss_d_metric: 1.164532
+Train Iter: 7820	Loss_d_metric: 1.107552
+Train Iter: 7840	Loss_d_metric: 1.077074
+Train Iter: 7860	Loss_d_metric: 1.109993
+Train Iter: 7880	Loss_d_metric: 1.083591
+Train Iter: 7900	Loss_d_metric: 1.127285
+Train Iter: 7920	Loss_d_metric: 1.109771
+Train Iter: 7940	Loss_d_metric: 1.121223
+Train Iter: 7960	Loss_d_metric: 1.106155
+Train Iter: 7980	Loss_d_metric: 1.077776
+
+**** TESTING WITH val ***
+472 correct from 1000 	Accuracy: 47.200%)
+914 correct from 2000 	Accuracy: 45.700%)
+1375 correct from 3000 	Accuracy: 45.833%)
+1822 correct from 4000 	Accuracy: 45.550%)
+2293 correct from 5000 	Accuracy: 45.860%)
+2741 correct from 6000 	Accuracy: 45.683%)
+3200 correct from 7000 	Accuracy: 45.714%)
+3686 correct from 8000 	Accuracy: 46.075%)
+4139 correct from 9000 	Accuracy: 45.989%)
+4595 correct from 10000 	Accuracy: 45.950%)
+5044 correct from 11000 	Accuracy: 45.855%)
+5495 correct from 12000 	Accuracy: 45.792%)
+5947 correct from 13000 	Accuracy: 45.746%)
+6424 correct from 14000 	Accuracy: 45.886%)
+6902 correct from 15000 	Accuracy: 46.013%)
+6902 correct from 15000 	Accuracy: 46.013%)
+*** TEST FINISHED ***
+
+Best test accuracy 46.0133 
+
+Train Iter: 8000	Loss_d_metric: 1.115342
+Train Iter: 8020	Loss_d_metric: 1.104359
+Train Iter: 8040	Loss_d_metric: 1.074752
+Train Iter: 8060	Loss_d_metric: 1.109063
+Train Iter: 8080	Loss_d_metric: 1.110601
+Train Iter: 8100	Loss_d_metric: 1.083464
+Train Iter: 8120	Loss_d_metric: 1.108758
+Train Iter: 8140	Loss_d_metric: 1.098902
+Train Iter: 8160	Loss_d_metric: 1.116181
+Train Iter: 8180	Loss_d_metric: 1.108582
+Train Iter: 8200	Loss_d_metric: 1.105015
+Train Iter: 8220	Loss_d_metric: 1.091352
+Train Iter: 8240	Loss_d_metric: 1.089085
+Train Iter: 8260	Loss_d_metric: 1.101069
+Train Iter: 8280	Loss_d_metric: 1.086172
+Train Iter: 8300	Loss_d_metric: 1.092679
+Train Iter: 8320	Loss_d_metric: 1.065662
+Train Iter: 8340	Loss_d_metric: 1.075446
+Train Iter: 8360	Loss_d_metric: 1.074576
+Train Iter: 8380	Loss_d_metric: 1.065454
+Train Iter: 8400	Loss_d_metric: 1.075606
+Train Iter: 8420	Loss_d_metric: 1.131763
+Train Iter: 8440	Loss_d_metric: 1.087998
+Train Iter: 8460	Loss_d_metric: 1.042701
+Train Iter: 8480	Loss_d_metric: 1.101736
+Train Iter: 8500	Loss_d_metric: 1.105381
+Train Iter: 8520	Loss_d_metric: 1.079392
+Train Iter: 8540	Loss_d_metric: 1.096122
+Train Iter: 8560	Loss_d_metric: 1.096221
+Train Iter: 8580	Loss_d_metric: 1.066098
+Train Iter: 8600	Loss_d_metric: 1.086378
+Train Iter: 8620	Loss_d_metric: 1.066473
+Train Iter: 8640	Loss_d_metric: 1.103659
+Train Iter: 8660	Loss_d_metric: 1.072671
+Train Iter: 8680	Loss_d_metric: 1.042554
+Train Iter: 8700	Loss_d_metric: 1.063161
+Train Iter: 8720	Loss_d_metric: 1.091430
+Train Iter: 8740	Loss_d_metric: 1.084439
+Train Iter: 8760	Loss_d_metric: 1.081345
+Train Iter: 8780	Loss_d_metric: 1.076924
+Train Iter: 8800	Loss_d_metric: 1.085065
+Train Iter: 8820	Loss_d_metric: 1.116368
+Train Iter: 8840	Loss_d_metric: 1.053983
+Train Iter: 8860	Loss_d_metric: 1.051295
+Train Iter: 8880	Loss_d_metric: 1.075561
+Train Iter: 8900	Loss_d_metric: 1.065876
+Train Iter: 8920	Loss_d_metric: 1.062130
+Train Iter: 8940	Loss_d_metric: 1.075036
+Train Iter: 8960	Loss_d_metric: 1.037095
+Train Iter: 8980	Loss_d_metric: 1.088889
+Train Iter: 9000	Loss_d_metric: 1.059480
+Train Iter: 9020	Loss_d_metric: 1.030891
+Train Iter: 9040	Loss_d_metric: 1.083791
+Train Iter: 9060	Loss_d_metric: 1.033595
+Train Iter: 9080	Loss_d_metric: 1.090424
+Train Iter: 9100	Loss_d_metric: 1.037254
+Train Iter: 9120	Loss_d_metric: 1.037462
+Train Iter: 9140	Loss_d_metric: 1.075869
+Train Iter: 9160	Loss_d_metric: 1.062572
+Train Iter: 9180	Loss_d_metric: 1.030147
+Train Iter: 9200	Loss_d_metric: 1.051339
+Train Iter: 9220	Loss_d_metric: 1.073339
+Train Iter: 9240	Loss_d_metric: 1.038869
+Train Iter: 9260	Loss_d_metric: 1.054396
+Train Iter: 9280	Loss_d_metric: 1.063425
+Train Iter: 9300	Loss_d_metric: 1.079057
+Train Iter: 9320	Loss_d_metric: 1.046429
+Train Iter: 9340	Loss_d_metric: 1.067574
+Train Iter: 9360	Loss_d_metric: 1.023693
+Train Iter: 9380	Loss_d_metric: 1.035976
+Train Iter: 9400	Loss_d_metric: 1.047740
+Train Iter: 9420	Loss_d_metric: 1.021307
+Train Iter: 9440	Loss_d_metric: 1.052781
+Train Iter: 9460	Loss_d_metric: 1.055217
+Train Iter: 9480	Loss_d_metric: 1.074920
+Train Iter: 9500	Loss_d_metric: 1.062338
+Train Iter: 9520	Loss_d_metric: 1.061728
+Train Iter: 9540	Loss_d_metric: 1.036089
+Train Iter: 9560	Loss_d_metric: 1.041830
+Train Iter: 9580	Loss_d_metric: 1.021063
+Train Iter: 9600	Loss_d_metric: 1.043321
+Train Iter: 9620	Loss_d_metric: 1.019315
+Train Iter: 9640	Loss_d_metric: 1.016537
+Train Iter: 9660	Loss_d_metric: 1.031692
+Train Iter: 9680	Loss_d_metric: 1.050021
+Train Iter: 9700	Loss_d_metric: 1.050106
+Train Iter: 9720	Loss_d_metric: 1.052251
+Train Iter: 9740	Loss_d_metric: 0.994930
+Train Iter: 9760	Loss_d_metric: 1.036672
+Train Iter: 9780	Loss_d_metric: 1.050871
+Train Iter: 9800	Loss_d_metric: 1.037176
+Train Iter: 9820	Loss_d_metric: 1.040467
+Train Iter: 9840	Loss_d_metric: 1.036085
+Train Iter: 9860	Loss_d_metric: 1.046233
+Train Iter: 9880	Loss_d_metric: 1.021866
+Train Iter: 9900	Loss_d_metric: 1.041901
+Train Iter: 9920	Loss_d_metric: 1.047726
+Train Iter: 9940	Loss_d_metric: 1.012522
+Train Iter: 9960	Loss_d_metric: 1.035542
+Train Iter: 9980	Loss_d_metric: 0.996322
+
+**** TESTING WITH val ***
+459 correct from 1000 	Accuracy: 45.900%)
+940 correct from 2000 	Accuracy: 47.000%)
+1447 correct from 3000 	Accuracy: 48.233%)
+1908 correct from 4000 	Accuracy: 47.700%)
+2385 correct from 5000 	Accuracy: 47.700%)
+2856 correct from 6000 	Accuracy: 47.600%)
+3339 correct from 7000 	Accuracy: 47.700%)
+3828 correct from 8000 	Accuracy: 47.850%)
+4304 correct from 9000 	Accuracy: 47.822%)
+4774 correct from 10000 	Accuracy: 47.740%)
+5278 correct from 11000 	Accuracy: 47.982%)
+5755 correct from 12000 	Accuracy: 47.958%)
+6248 correct from 13000 	Accuracy: 48.062%)
+6743 correct from 14000 	Accuracy: 48.164%)
+7227 correct from 15000 	Accuracy: 48.180%)
+7227 correct from 15000 	Accuracy: 48.180%)
+*** TEST FINISHED ***
+
+Best test accuracy 48.1800 
+
+Train Iter: 10000	Loss_d_metric: 1.018363
+Train Iter: 10020	Loss_d_metric: 1.034827
+Train Iter: 10040	Loss_d_metric: 1.029003
+Train Iter: 10060	Loss_d_metric: 1.043537
+Train Iter: 10080	Loss_d_metric: 1.040324
+Train Iter: 10100	Loss_d_metric: 1.049635
+Train Iter: 10120	Loss_d_metric: 0.996558
+Train Iter: 10140	Loss_d_metric: 1.004845
+Train Iter: 10160	Loss_d_metric: 1.051763
+Train Iter: 10180	Loss_d_metric: 1.042933
+Train Iter: 10200	Loss_d_metric: 0.998342
+Train Iter: 10220	Loss_d_metric: 1.022277
+Train Iter: 10240	Loss_d_metric: 1.018010
+Train Iter: 10260	Loss_d_metric: 1.050527
+Train Iter: 10280	Loss_d_metric: 1.026892
+Train Iter: 10300	Loss_d_metric: 0.989253
+Train Iter: 10320	Loss_d_metric: 1.010280
+Train Iter: 10340	Loss_d_metric: 1.029689
+Train Iter: 10360	Loss_d_metric: 1.038458
+Train Iter: 10380	Loss_d_metric: 0.983298
+Train Iter: 10400	Loss_d_metric: 1.009009
+Train Iter: 10420	Loss_d_metric: 1.023623
+Train Iter: 10440	Loss_d_metric: 1.007233
+Train Iter: 10460	Loss_d_metric: 1.018589
+Train Iter: 10480	Loss_d_metric: 1.017830
+Train Iter: 10500	Loss_d_metric: 0.995519
+Train Iter: 10520	Loss_d_metric: 1.007721
+Train Iter: 10540	Loss_d_metric: 0.985960
+Train Iter: 10560	Loss_d_metric: 1.020349
+Train Iter: 10580	Loss_d_metric: 1.006548
+Train Iter: 10600	Loss_d_metric: 1.002307
+Train Iter: 10620	Loss_d_metric: 1.044191
+Train Iter: 10640	Loss_d_metric: 1.013775
+Train Iter: 10660	Loss_d_metric: 1.035990
+Train Iter: 10680	Loss_d_metric: 1.005844
+Train Iter: 10700	Loss_d_metric: 1.016345
+Train Iter: 10720	Loss_d_metric: 1.023048
+Train Iter: 10740	Loss_d_metric: 1.018305
+Train Iter: 10760	Loss_d_metric: 1.024440
+Train Iter: 10780	Loss_d_metric: 1.040389
+Train Iter: 10800	Loss_d_metric: 0.996393
+Train Iter: 10820	Loss_d_metric: 0.972126
+Train Iter: 10840	Loss_d_metric: 0.969818
+Train Iter: 10860	Loss_d_metric: 1.007729
+Train Iter: 10880	Loss_d_metric: 0.988269
+Train Iter: 10900	Loss_d_metric: 1.028317
+Train Iter: 10920	Loss_d_metric: 1.004997
+Train Iter: 10940	Loss_d_metric: 0.978822
+Train Iter: 10960	Loss_d_metric: 1.009489
+Train Iter: 10980	Loss_d_metric: 0.987816
+Train Iter: 11000	Loss_d_metric: 1.023349
+Train Iter: 11020	Loss_d_metric: 0.998584
+Train Iter: 11040	Loss_d_metric: 0.984025
+Train Iter: 11060	Loss_d_metric: 1.004717
+Train Iter: 11080	Loss_d_metric: 1.014436
+Train Iter: 11100	Loss_d_metric: 1.012926
+Train Iter: 11120	Loss_d_metric: 0.992324
+Train Iter: 11140	Loss_d_metric: 1.004274
+Train Iter: 11160	Loss_d_metric: 0.984480
+Train Iter: 11180	Loss_d_metric: 1.014127
+Train Iter: 11200	Loss_d_metric: 0.986551
+Train Iter: 11220	Loss_d_metric: 0.965618
+Train Iter: 11240	Loss_d_metric: 1.035050
+Train Iter: 11260	Loss_d_metric: 1.001113
+Train Iter: 11280	Loss_d_metric: 1.011913
+Train Iter: 11300	Loss_d_metric: 0.970874
+Train Iter: 11320	Loss_d_metric: 1.013934
+Train Iter: 11340	Loss_d_metric: 1.002502
+Train Iter: 11360	Loss_d_metric: 0.999093
+Train Iter: 11380	Loss_d_metric: 1.007466
+Train Iter: 11400	Loss_d_metric: 0.955737
+Train Iter: 11420	Loss_d_metric: 0.982556
+Train Iter: 11440	Loss_d_metric: 0.995717
+Train Iter: 11460	Loss_d_metric: 0.981392
+Train Iter: 11480	Loss_d_metric: 0.961277
+Train Iter: 11500	Loss_d_metric: 0.987419
+Train Iter: 11520	Loss_d_metric: 1.023721
+Train Iter: 11540	Loss_d_metric: 1.022924
+Train Iter: 11560	Loss_d_metric: 0.987986
+Train Iter: 11580	Loss_d_metric: 0.971320
+Train Iter: 11600	Loss_d_metric: 0.976264
+Train Iter: 11620	Loss_d_metric: 0.981004
+Train Iter: 11640	Loss_d_metric: 0.965869
+Train Iter: 11660	Loss_d_metric: 0.974596
+Train Iter: 11680	Loss_d_metric: 0.974058
+Train Iter: 11700	Loss_d_metric: 1.012321
+Train Iter: 11720	Loss_d_metric: 1.009620
+Train Iter: 11740	Loss_d_metric: 0.975434
+Train Iter: 11760	Loss_d_metric: 0.970518
+Train Iter: 11780	Loss_d_metric: 0.975616
+Train Iter: 11800	Loss_d_metric: 0.953537
+Train Iter: 11820	Loss_d_metric: 0.980671
+Train Iter: 11840	Loss_d_metric: 0.992191
+Train Iter: 11860	Loss_d_metric: 1.001077
+Train Iter: 11880	Loss_d_metric: 0.940145
+Train Iter: 11900	Loss_d_metric: 0.977394
+Train Iter: 11920	Loss_d_metric: 1.017786
+Train Iter: 11940	Loss_d_metric: 0.967679
+Train Iter: 11960	Loss_d_metric: 0.953045
+Train Iter: 11980	Loss_d_metric: 0.967163
+
+**** TESTING WITH val ***
+474 correct from 1000 	Accuracy: 47.400%)
+964 correct from 2000 	Accuracy: 48.200%)
+1407 correct from 3000 	Accuracy: 46.900%)
+1854 correct from 4000 	Accuracy: 46.350%)
+2319 correct from 5000 	Accuracy: 46.380%)
+2816 correct from 6000 	Accuracy: 46.933%)
+3275 correct from 7000 	Accuracy: 46.786%)
+3723 correct from 8000 	Accuracy: 46.538%)
+4208 correct from 9000 	Accuracy: 46.756%)
+4690 correct from 10000 	Accuracy: 46.900%)
+5184 correct from 11000 	Accuracy: 47.127%)
+5691 correct from 12000 	Accuracy: 47.425%)
+6168 correct from 13000 	Accuracy: 47.446%)
+6644 correct from 14000 	Accuracy: 47.457%)
+7132 correct from 15000 	Accuracy: 47.547%)
+7132 correct from 15000 	Accuracy: 47.547%)
+*** TEST FINISHED ***
+
+Best test accuracy 48.1800 
+
+Train Iter: 12000	Loss_d_metric: 0.966860
+Train Iter: 12020	Loss_d_metric: 0.990401
+Train Iter: 12040	Loss_d_metric: 0.995518
+Train Iter: 12060	Loss_d_metric: 1.004972
+Train Iter: 12080	Loss_d_metric: 0.936818
+Train Iter: 12100	Loss_d_metric: 0.984325
+Train Iter: 12120	Loss_d_metric: 1.006697
+Train Iter: 12140	Loss_d_metric: 0.990720
+Train Iter: 12160	Loss_d_metric: 0.991979
+Train Iter: 12180	Loss_d_metric: 1.001684
+Train Iter: 12200	Loss_d_metric: 0.986288
+Train Iter: 12220	Loss_d_metric: 0.960192
+Train Iter: 12240	Loss_d_metric: 0.984022
+Train Iter: 12260	Loss_d_metric: 0.928080
+Train Iter: 12280	Loss_d_metric: 0.963873
+Train Iter: 12300	Loss_d_metric: 0.985488
+Train Iter: 12320	Loss_d_metric: 0.981514
+Train Iter: 12340	Loss_d_metric: 0.994072
+Train Iter: 12360	Loss_d_metric: 0.944609
+Train Iter: 12380	Loss_d_metric: 0.978265
+Train Iter: 12400	Loss_d_metric: 0.993922
+Train Iter: 12420	Loss_d_metric: 0.964192
+Train Iter: 12440	Loss_d_metric: 0.955461
+Train Iter: 12460	Loss_d_metric: 0.925802
+Train Iter: 12480	Loss_d_metric: 0.959144
+Train Iter: 12500	Loss_d_metric: 0.959344
+Train Iter: 12520	Loss_d_metric: 0.963292
+Train Iter: 12540	Loss_d_metric: 0.959837
+Train Iter: 12560	Loss_d_metric: 0.953410
+Train Iter: 12580	Loss_d_metric: 0.965924
+Train Iter: 12600	Loss_d_metric: 0.961892
+Train Iter: 12620	Loss_d_metric: 0.951329
+Train Iter: 12640	Loss_d_metric: 0.966915
+Train Iter: 12660	Loss_d_metric: 0.982482
+Train Iter: 12680	Loss_d_metric: 0.942549
+Train Iter: 12700	Loss_d_metric: 0.927168
+Train Iter: 12720	Loss_d_metric: 0.948469
+Train Iter: 12740	Loss_d_metric: 0.953385
+Train Iter: 12760	Loss_d_metric: 0.957962
+Train Iter: 12780	Loss_d_metric: 0.940755
+Train Iter: 12800	Loss_d_metric: 0.969629
+Train Iter: 12820	Loss_d_metric: 0.940909
+Train Iter: 12840	Loss_d_metric: 0.953058
+Train Iter: 12860	Loss_d_metric: 0.931495
+Train Iter: 12880	Loss_d_metric: 0.925909
+Train Iter: 12900	Loss_d_metric: 0.941255
+Train Iter: 12920	Loss_d_metric: 0.924933
+Train Iter: 12940	Loss_d_metric: 0.971507
+Train Iter: 12960	Loss_d_metric: 0.934095
+Train Iter: 12980	Loss_d_metric: 0.922308
+Train Iter: 13000	Loss_d_metric: 0.947876
+Train Iter: 13020	Loss_d_metric: 0.966046
+Train Iter: 13040	Loss_d_metric: 0.940144
+Train Iter: 13060	Loss_d_metric: 0.944034
+Train Iter: 13080	Loss_d_metric: 0.963614
+Train Iter: 13100	Loss_d_metric: 0.890227
+Train Iter: 13120	Loss_d_metric: 0.989650
+Train Iter: 13140	Loss_d_metric: 0.913180
+Train Iter: 13160	Loss_d_metric: 1.002270
+Train Iter: 13180	Loss_d_metric: 0.942198
+Train Iter: 13200	Loss_d_metric: 0.954620
+Train Iter: 13220	Loss_d_metric: 0.927732
+Train Iter: 13240	Loss_d_metric: 0.905880
+Train Iter: 13260	Loss_d_metric: 0.958347
+Train Iter: 13280	Loss_d_metric: 0.958455
+Train Iter: 13300	Loss_d_metric: 0.932076
+Train Iter: 13320	Loss_d_metric: 0.928553
+Train Iter: 13340	Loss_d_metric: 0.946533
+Train Iter: 13360	Loss_d_metric: 0.910837
+Train Iter: 13380	Loss_d_metric: 0.914394
+Train Iter: 13400	Loss_d_metric: 0.951602
+Train Iter: 13420	Loss_d_metric: 0.939887
+Train Iter: 13440	Loss_d_metric: 0.927130
+Train Iter: 13460	Loss_d_metric: 0.938875
+Train Iter: 13480	Loss_d_metric: 0.958182
+Train Iter: 13500	Loss_d_metric: 0.944558
+Train Iter: 13520	Loss_d_metric: 0.942617
+Train Iter: 13540	Loss_d_metric: 0.884992
+Train Iter: 13560	Loss_d_metric: 0.931015
+Train Iter: 13580	Loss_d_metric: 0.934396
+Train Iter: 13600	Loss_d_metric: 0.923655
+Train Iter: 13620	Loss_d_metric: 0.934723
+Train Iter: 13640	Loss_d_metric: 0.938009
+Train Iter: 13660	Loss_d_metric: 0.923652
+Train Iter: 13680	Loss_d_metric: 0.935953
+Train Iter: 13700	Loss_d_metric: 0.946693
+Train Iter: 13720	Loss_d_metric: 0.908301
+Train Iter: 13740	Loss_d_metric: 0.954814
+Train Iter: 13760	Loss_d_metric: 0.920862
+Train Iter: 13780	Loss_d_metric: 0.895450
+Train Iter: 13800	Loss_d_metric: 0.929525
+Train Iter: 13820	Loss_d_metric: 0.935701
+Train Iter: 13840	Loss_d_metric: 0.884351
+Train Iter: 13860	Loss_d_metric: 0.933719
+Train Iter: 13880	Loss_d_metric: 0.917143
+Train Iter: 13900	Loss_d_metric: 0.939112
+Train Iter: 13920	Loss_d_metric: 0.942060
+Train Iter: 13940	Loss_d_metric: 0.956789
+Train Iter: 13960	Loss_d_metric: 0.955920
+Train Iter: 13980	Loss_d_metric: 0.909203
+
+**** TESTING WITH val ***
+469 correct from 1000 	Accuracy: 46.900%)
+974 correct from 2000 	Accuracy: 48.700%)
+1482 correct from 3000 	Accuracy: 49.400%)
+1982 correct from 4000 	Accuracy: 49.550%)
+2489 correct from 5000 	Accuracy: 49.780%)
+2959 correct from 6000 	Accuracy: 49.317%)
+3458 correct from 7000 	Accuracy: 49.400%)
+3965 correct from 8000 	Accuracy: 49.562%)
+4490 correct from 9000 	Accuracy: 49.889%)
+4982 correct from 10000 	Accuracy: 49.820%)
+5472 correct from 11000 	Accuracy: 49.745%)
+5954 correct from 12000 	Accuracy: 49.617%)
+6452 correct from 13000 	Accuracy: 49.631%)
+6944 correct from 14000 	Accuracy: 49.600%)
+7436 correct from 15000 	Accuracy: 49.573%)
+7436 correct from 15000 	Accuracy: 49.573%)
+*** TEST FINISHED ***
+
+Best test accuracy 49.5733 
+
+Train Iter: 14000	Loss_d_metric: 0.947165
+Train Iter: 14020	Loss_d_metric: 0.932132
+Train Iter: 14040	Loss_d_metric: 0.895077
+Train Iter: 14060	Loss_d_metric: 0.919833
+Train Iter: 14080	Loss_d_metric: 0.951887
+Train Iter: 14100	Loss_d_metric: 0.935357
+Train Iter: 14120	Loss_d_metric: 0.902035
+Train Iter: 14140	Loss_d_metric: 0.913446
+Train Iter: 14160	Loss_d_metric: 0.934749
+Train Iter: 14180	Loss_d_metric: 0.926466
+Train Iter: 14200	Loss_d_metric: 0.903406
+Train Iter: 14220	Loss_d_metric: 0.887013
+Train Iter: 14240	Loss_d_metric: 0.941327
+Train Iter: 14260	Loss_d_metric: 0.896527
+Train Iter: 14280	Loss_d_metric: 0.941104
+Train Iter: 14300	Loss_d_metric: 0.900514
+Train Iter: 14320	Loss_d_metric: 0.938019
+Train Iter: 14340	Loss_d_metric: 0.926753
+Train Iter: 14360	Loss_d_metric: 0.908647
+Train Iter: 14380	Loss_d_metric: 0.899850
+Train Iter: 14400	Loss_d_metric: 0.882061
+Train Iter: 14420	Loss_d_metric: 0.919961
+Train Iter: 14440	Loss_d_metric: 0.921323
+Train Iter: 14460	Loss_d_metric: 0.916469
+Train Iter: 14480	Loss_d_metric: 0.890245
+Train Iter: 14500	Loss_d_metric: 0.908772
+Train Iter: 14520	Loss_d_metric: 0.887641
+Train Iter: 14540	Loss_d_metric: 0.907240
+Train Iter: 14560	Loss_d_metric: 0.895330
+Train Iter: 14580	Loss_d_metric: 0.902670
+Train Iter: 14600	Loss_d_metric: 0.929360
+Train Iter: 14620	Loss_d_metric: 0.873868
+Train Iter: 14640	Loss_d_metric: 0.895358
+Train Iter: 14660	Loss_d_metric: 0.904250
+Train Iter: 14680	Loss_d_metric: 0.926932
+Train Iter: 14700	Loss_d_metric: 0.925781
+Train Iter: 14720	Loss_d_metric: 0.906161
+Train Iter: 14740	Loss_d_metric: 0.921103
+Train Iter: 14760	Loss_d_metric: 0.906722
+Train Iter: 14780	Loss_d_metric: 0.878588
+Train Iter: 14800	Loss_d_metric: 0.905370
+Train Iter: 14820	Loss_d_metric: 0.889450
+Train Iter: 14840	Loss_d_metric: 0.946741
+Train Iter: 14860	Loss_d_metric: 0.912971
+Train Iter: 14880	Loss_d_metric: 0.881998
+Train Iter: 14900	Loss_d_metric: 0.904100
+Train Iter: 14920	Loss_d_metric: 0.883316
+Train Iter: 14940	Loss_d_metric: 0.898043
+Train Iter: 14960	Loss_d_metric: 0.876213
+Train Iter: 14980	Loss_d_metric: 0.914586
+Train Iter: 15000	Loss_d_metric: 0.903068
+Train Iter: 15020	Loss_d_metric: 0.908893
+Train Iter: 15040	Loss_d_metric: 0.859089
+Train Iter: 15060	Loss_d_metric: 0.888084
+Train Iter: 15080	Loss_d_metric: 0.911451
+Train Iter: 15100	Loss_d_metric: 0.859307
+Train Iter: 15120	Loss_d_metric: 0.951780
+Train Iter: 15140	Loss_d_metric: 0.897921
+Train Iter: 15160	Loss_d_metric: 0.884632
+Train Iter: 15180	Loss_d_metric: 0.881716
+Train Iter: 15200	Loss_d_metric: 0.871934
+Train Iter: 15220	Loss_d_metric: 0.931158
+Train Iter: 15240	Loss_d_metric: 0.857454
+Train Iter: 15260	Loss_d_metric: 0.903435
+Train Iter: 15280	Loss_d_metric: 0.889526
+Train Iter: 15300	Loss_d_metric: 0.912172
+Train Iter: 15320	Loss_d_metric: 0.873023
+Train Iter: 15340	Loss_d_metric: 0.926106
+Train Iter: 15360	Loss_d_metric: 0.907120
+Train Iter: 15380	Loss_d_metric: 0.892527
+Train Iter: 15400	Loss_d_metric: 0.884182
+Train Iter: 15420	Loss_d_metric: 0.884909
+Train Iter: 15440	Loss_d_metric: 0.898707
+Train Iter: 15460	Loss_d_metric: 0.860062
+Train Iter: 15480	Loss_d_metric: 0.894657
+Train Iter: 15500	Loss_d_metric: 0.903550
+Train Iter: 15520	Loss_d_metric: 0.906973
+Train Iter: 15540	Loss_d_metric: 0.911647
+Train Iter: 15560	Loss_d_metric: 0.889425
+Train Iter: 15580	Loss_d_metric: 0.894469
+Train Iter: 15600	Loss_d_metric: 0.899492
+Train Iter: 15620	Loss_d_metric: 0.869987
+Train Iter: 15640	Loss_d_metric: 0.879073
+Train Iter: 15660	Loss_d_metric: 0.893920
+Train Iter: 15680	Loss_d_metric: 0.915467
+Train Iter: 15700	Loss_d_metric: 0.901073
+Train Iter: 15720	Loss_d_metric: 0.867688
+Train Iter: 15740	Loss_d_metric: 0.928662
+Train Iter: 15760	Loss_d_metric: 0.857809
+Train Iter: 15780	Loss_d_metric: 0.871797
+Train Iter: 15800	Loss_d_metric: 0.884862
+Train Iter: 15820	Loss_d_metric: 0.881623
+Train Iter: 15840	Loss_d_metric: 0.910700
+Train Iter: 15860	Loss_d_metric: 0.901303
+Train Iter: 15880	Loss_d_metric: 0.859169
+Train Iter: 15900	Loss_d_metric: 0.895303
+Train Iter: 15920	Loss_d_metric: 0.890576
+Train Iter: 15940	Loss_d_metric: 0.824750
+Train Iter: 15960	Loss_d_metric: 0.899012
+Train Iter: 15980	Loss_d_metric: 0.893244
+
+**** TESTING WITH val ***
+490 correct from 1000 	Accuracy: 49.000%)
+976 correct from 2000 	Accuracy: 48.800%)
+1494 correct from 3000 	Accuracy: 49.800%)
+1993 correct from 4000 	Accuracy: 49.825%)
+2515 correct from 5000 	Accuracy: 50.300%)
+3001 correct from 6000 	Accuracy: 50.017%)
+3479 correct from 7000 	Accuracy: 49.700%)
+3966 correct from 8000 	Accuracy: 49.575%)
+4460 correct from 9000 	Accuracy: 49.556%)
+4930 correct from 10000 	Accuracy: 49.300%)
+5415 correct from 11000 	Accuracy: 49.227%)
+5900 correct from 12000 	Accuracy: 49.167%)
+6362 correct from 13000 	Accuracy: 48.938%)
+6820 correct from 14000 	Accuracy: 48.714%)
+7289 correct from 15000 	Accuracy: 48.593%)
+7289 correct from 15000 	Accuracy: 48.593%)
+*** TEST FINISHED ***
+
+Best test accuracy 49.5733 
+
+Train Iter: 16000	Loss_d_metric: 0.896037
+Train Iter: 16020	Loss_d_metric: 0.898969
+Train Iter: 16040	Loss_d_metric: 0.886865
+Train Iter: 16060	Loss_d_metric: 0.874843
+Train Iter: 16080	Loss_d_metric: 0.851619
+Train Iter: 16100	Loss_d_metric: 0.881508
+Train Iter: 16120	Loss_d_metric: 0.876023
+Train Iter: 16140	Loss_d_metric: 0.867130
+Train Iter: 16160	Loss_d_metric: 0.847132
+Train Iter: 16180	Loss_d_metric: 0.865469
+Train Iter: 16200	Loss_d_metric: 0.897643
+Train Iter: 16220	Loss_d_metric: 0.891458
+Train Iter: 16240	Loss_d_metric: 0.867096
+Train Iter: 16260	Loss_d_metric: 0.847701
+Train Iter: 16280	Loss_d_metric: 0.871539
+Train Iter: 16300	Loss_d_metric: 0.847550
+Train Iter: 16320	Loss_d_metric: 0.885072
+Train Iter: 16340	Loss_d_metric: 0.878710
+Train Iter: 16360	Loss_d_metric: 0.823862
+Train Iter: 16380	Loss_d_metric: 0.868277
+Train Iter: 16400	Loss_d_metric: 0.859168
+Train Iter: 16420	Loss_d_metric: 0.881846
+Train Iter: 16440	Loss_d_metric: 0.876182
+Train Iter: 16460	Loss_d_metric: 0.899937
+Train Iter: 16480	Loss_d_metric: 0.893285
+Train Iter: 16500	Loss_d_metric: 0.875321
+Train Iter: 16520	Loss_d_metric: 0.845930
+Train Iter: 16540	Loss_d_metric: 0.865445
+Train Iter: 16560	Loss_d_metric: 0.833963
+Train Iter: 16580	Loss_d_metric: 0.883757
+Train Iter: 16600	Loss_d_metric: 0.862809
+Train Iter: 16620	Loss_d_metric: 0.882860
+Train Iter: 16640	Loss_d_metric: 0.876944
+Train Iter: 16660	Loss_d_metric: 0.869802
+Train Iter: 16680	Loss_d_metric: 0.845581
+Train Iter: 16700	Loss_d_metric: 0.852201
+Train Iter: 16720	Loss_d_metric: 0.883224
+Train Iter: 16740	Loss_d_metric: 0.852107
+Train Iter: 16760	Loss_d_metric: 0.868320
+Train Iter: 16780	Loss_d_metric: 0.903830
+Train Iter: 16800	Loss_d_metric: 0.838389
+Train Iter: 16820	Loss_d_metric: 0.884322
+Train Iter: 16840	Loss_d_metric: 0.881646
+Train Iter: 16860	Loss_d_metric: 0.880885
+Train Iter: 16880	Loss_d_metric: 0.817802
+Train Iter: 16900	Loss_d_metric: 0.867517
+Train Iter: 16920	Loss_d_metric: 0.855668
+Train Iter: 16940	Loss_d_metric: 0.841559
+Train Iter: 16960	Loss_d_metric: 0.844226
+Train Iter: 16980	Loss_d_metric: 0.871719
+Train Iter: 17000	Loss_d_metric: 0.851376
+Train Iter: 17020	Loss_d_metric: 0.857349
+Train Iter: 17040	Loss_d_metric: 0.877360
+Train Iter: 17060	Loss_d_metric: 0.843590
+Train Iter: 17080	Loss_d_metric: 0.869412
+Train Iter: 17100	Loss_d_metric: 0.890488
+Train Iter: 17120	Loss_d_metric: 0.895156
+Train Iter: 17140	Loss_d_metric: 0.876306
+Train Iter: 17160	Loss_d_metric: 0.861163
+Train Iter: 17180	Loss_d_metric: 0.834356
+Train Iter: 17200	Loss_d_metric: 0.824507
+Train Iter: 17220	Loss_d_metric: 0.856707
+Train Iter: 17240	Loss_d_metric: 0.860348
+Train Iter: 17260	Loss_d_metric: 0.882416
+Train Iter: 17280	Loss_d_metric: 0.854404
+Train Iter: 17300	Loss_d_metric: 0.851697
+Train Iter: 17320	Loss_d_metric: 0.857709
+Train Iter: 17340	Loss_d_metric: 0.877340
+Train Iter: 17360	Loss_d_metric: 0.875585
+Train Iter: 17380	Loss_d_metric: 0.801985
+Train Iter: 17400	Loss_d_metric: 0.849617
+Train Iter: 17420	Loss_d_metric: 0.877867
+Train Iter: 17440	Loss_d_metric: 0.859507
+Train Iter: 17460	Loss_d_metric: 0.861560
+Train Iter: 17480	Loss_d_metric: 0.835387
+Train Iter: 17500	Loss_d_metric: 0.875719
+Train Iter: 17520	Loss_d_metric: 0.852593
+Train Iter: 17540	Loss_d_metric: 0.879690
+Train Iter: 17560	Loss_d_metric: 0.836249
+Train Iter: 17580	Loss_d_metric: 0.847074
+Train Iter: 17600	Loss_d_metric: 0.846422
+Train Iter: 17620	Loss_d_metric: 0.867468
+Train Iter: 17640	Loss_d_metric: 0.819412
+Train Iter: 17660	Loss_d_metric: 0.863453
+Train Iter: 17680	Loss_d_metric: 0.851141
+Train Iter: 17700	Loss_d_metric: 0.879182
+Train Iter: 17720	Loss_d_metric: 0.845279
+Train Iter: 17740	Loss_d_metric: 0.833776
+Train Iter: 17760	Loss_d_metric: 0.838119
+Train Iter: 17780	Loss_d_metric: 0.850874
+Train Iter: 17800	Loss_d_metric: 0.841768
+Train Iter: 17820	Loss_d_metric: 0.871007
+Train Iter: 17840	Loss_d_metric: 0.836256
+Train Iter: 17860	Loss_d_metric: 0.855058
+Train Iter: 17880	Loss_d_metric: 0.862698
+Train Iter: 17900	Loss_d_metric: 0.860021
+Train Iter: 17920	Loss_d_metric: 0.855095
+Train Iter: 17940	Loss_d_metric: 0.860842
+Train Iter: 17960	Loss_d_metric: 0.856053
+Train Iter: 17980	Loss_d_metric: 0.838752
+
+**** TESTING WITH val ***
+494 correct from 1000 	Accuracy: 49.400%)
+1006 correct from 2000 	Accuracy: 50.300%)
+1507 correct from 3000 	Accuracy: 50.233%)
+1969 correct from 4000 	Accuracy: 49.225%)
+2491 correct from 5000 	Accuracy: 49.820%)
+2969 correct from 6000 	Accuracy: 49.483%)
+3502 correct from 7000 	Accuracy: 50.029%)
+4010 correct from 8000 	Accuracy: 50.125%)
+4474 correct from 9000 	Accuracy: 49.711%)
+4965 correct from 10000 	Accuracy: 49.650%)
+5452 correct from 11000 	Accuracy: 49.564%)
+5938 correct from 12000 	Accuracy: 49.483%)
+6437 correct from 13000 	Accuracy: 49.515%)
+6911 correct from 14000 	Accuracy: 49.364%)
+7383 correct from 15000 	Accuracy: 49.220%)
+7383 correct from 15000 	Accuracy: 49.220%)
+*** TEST FINISHED ***
+
+Best test accuracy 49.5733 
+
+Train Iter: 18000	Loss_d_metric: 0.843832
+Train Iter: 18020	Loss_d_metric: 0.815479
+Train Iter: 18040	Loss_d_metric: 0.839127
+Train Iter: 18060	Loss_d_metric: 0.849867
+Train Iter: 18080	Loss_d_metric: 0.857351
+Train Iter: 18100	Loss_d_metric: 0.828537
+Train Iter: 18120	Loss_d_metric: 0.819520
+Train Iter: 18140	Loss_d_metric: 0.873535
+Train Iter: 18160	Loss_d_metric: 0.878395
+Train Iter: 18180	Loss_d_metric: 0.828326
+Train Iter: 18200	Loss_d_metric: 0.830660
+Train Iter: 18220	Loss_d_metric: 0.834797
+Train Iter: 18240	Loss_d_metric: 0.833405
+Train Iter: 18260	Loss_d_metric: 0.805166
+Train Iter: 18280	Loss_d_metric: 0.780126
+Train Iter: 18300	Loss_d_metric: 0.848040
+Train Iter: 18320	Loss_d_metric: 0.855049
+Train Iter: 18340	Loss_d_metric: 0.841379
+Train Iter: 18360	Loss_d_metric: 0.831322
+Train Iter: 18380	Loss_d_metric: 0.861115
+Train Iter: 18400	Loss_d_metric: 0.815542
+Train Iter: 18420	Loss_d_metric: 0.800723
+Train Iter: 18440	Loss_d_metric: 0.844577
+Train Iter: 18460	Loss_d_metric: 0.836348
+Train Iter: 18480	Loss_d_metric: 0.811612
+Train Iter: 18500	Loss_d_metric: 0.844906
+Train Iter: 18520	Loss_d_metric: 0.888057
+Train Iter: 18540	Loss_d_metric: 0.822651
+Train Iter: 18560	Loss_d_metric: 0.836511
+Train Iter: 18580	Loss_d_metric: 0.836075
+Train Iter: 18600	Loss_d_metric: 0.819407
+Train Iter: 18620	Loss_d_metric: 0.851797
+Train Iter: 18640	Loss_d_metric: 0.830880
+Train Iter: 18660	Loss_d_metric: 0.815834
+Train Iter: 18680	Loss_d_metric: 0.807658
+Train Iter: 18700	Loss_d_metric: 0.792458
+Train Iter: 18720	Loss_d_metric: 0.792515
+Train Iter: 18740	Loss_d_metric: 0.791751
+Train Iter: 18760	Loss_d_metric: 0.826149
+Train Iter: 18780	Loss_d_metric: 0.833719
+Train Iter: 18800	Loss_d_metric: 0.813329
+Train Iter: 18820	Loss_d_metric: 0.846423
+Train Iter: 18840	Loss_d_metric: 0.821848
+Train Iter: 18860	Loss_d_metric: 0.822598
+Train Iter: 18880	Loss_d_metric: 0.835710
+Train Iter: 18900	Loss_d_metric: 0.838279
+Train Iter: 18920	Loss_d_metric: 0.786584
+Train Iter: 18940	Loss_d_metric: 0.840741
+Train Iter: 18960	Loss_d_metric: 0.797149
+Train Iter: 18980	Loss_d_metric: 0.791583
+Train Iter: 19000	Loss_d_metric: 0.869705
+Train Iter: 19020	Loss_d_metric: 0.847005
+Train Iter: 19040	Loss_d_metric: 0.828936
+Train Iter: 19060	Loss_d_metric: 0.794660
+Train Iter: 19080	Loss_d_metric: 0.833202
+Train Iter: 19100	Loss_d_metric: 0.800990
+Train Iter: 19120	Loss_d_metric: 0.812476
+Train Iter: 19140	Loss_d_metric: 0.814072
+Train Iter: 19160	Loss_d_metric: 0.825670
+Train Iter: 19180	Loss_d_metric: 0.809631
+Train Iter: 19200	Loss_d_metric: 0.818407
+Train Iter: 19220	Loss_d_metric: 0.802933
+Train Iter: 19240	Loss_d_metric: 0.822672
+Train Iter: 19260	Loss_d_metric: 0.829851
+Train Iter: 19280	Loss_d_metric: 0.830568
+Train Iter: 19300	Loss_d_metric: 0.807905
+Train Iter: 19320	Loss_d_metric: 0.790195
+Train Iter: 19340	Loss_d_metric: 0.816835
+Train Iter: 19360	Loss_d_metric: 0.802205
+Train Iter: 19380	Loss_d_metric: 0.834511
+Train Iter: 19400	Loss_d_metric: 0.811434
+Train Iter: 19420	Loss_d_metric: 0.805186
+Train Iter: 19440	Loss_d_metric: 0.810926
+Train Iter: 19460	Loss_d_metric: 0.797814
+Train Iter: 19480	Loss_d_metric: 0.834700
+Train Iter: 19500	Loss_d_metric: 0.818668
+Train Iter: 19520	Loss_d_metric: 0.809432
+Train Iter: 19540	Loss_d_metric: 0.806634
+Train Iter: 19560	Loss_d_metric: 0.834323
+Train Iter: 19580	Loss_d_metric: 0.806567
+Train Iter: 19600	Loss_d_metric: 0.791474
+Train Iter: 19620	Loss_d_metric: 0.805544
+Train Iter: 19640	Loss_d_metric: 0.807083
+Train Iter: 19660	Loss_d_metric: 0.796990
+Train Iter: 19680	Loss_d_metric: 0.810917
+Train Iter: 19700	Loss_d_metric: 0.870799
+Train Iter: 19720	Loss_d_metric: 0.822724
+Train Iter: 19740	Loss_d_metric: 0.821278
+Train Iter: 19760	Loss_d_metric: 0.789801
+Train Iter: 19780	Loss_d_metric: 0.824419
+Train Iter: 19800	Loss_d_metric: 0.760896
+Train Iter: 19820	Loss_d_metric: 0.812011
+Train Iter: 19840	Loss_d_metric: 0.822077
+Train Iter: 19860	Loss_d_metric: 0.840176
+Train Iter: 19880	Loss_d_metric: 0.774499
+Train Iter: 19900	Loss_d_metric: 0.855781
+Train Iter: 19920	Loss_d_metric: 0.816600
+Train Iter: 19940	Loss_d_metric: 0.807964
+Train Iter: 19960	Loss_d_metric: 0.778340
+Train Iter: 19980	Loss_d_metric: 0.793740
+
+**** TESTING WITH val ***
+483 correct from 1000 	Accuracy: 48.300%)
+971 correct from 2000 	Accuracy: 48.550%)
+1475 correct from 3000 	Accuracy: 49.167%)
+1954 correct from 4000 	Accuracy: 48.850%)
+2441 correct from 5000 	Accuracy: 48.820%)
+2939 correct from 6000 	Accuracy: 48.983%)
+3445 correct from 7000 	Accuracy: 49.214%)
+3946 correct from 8000 	Accuracy: 49.325%)
+4425 correct from 9000 	Accuracy: 49.167%)
+4906 correct from 10000 	Accuracy: 49.060%)
+5385 correct from 11000 	Accuracy: 48.955%)
+5864 correct from 12000 	Accuracy: 48.867%)
+6356 correct from 13000 	Accuracy: 48.892%)
+6835 correct from 14000 	Accuracy: 48.821%)
+7339 correct from 15000 	Accuracy: 48.927%)
+7339 correct from 15000 	Accuracy: 48.927%)
+*** TEST FINISHED ***
+
+Best test accuracy 49.5733 
+
+Train Iter: 20000	Loss_d_metric: 0.797071
+Train Iter: 20020	Loss_d_metric: 0.790709
+Train Iter: 20040	Loss_d_metric: 0.816297
+Train Iter: 20060	Loss_d_metric: 0.771298
+Train Iter: 20080	Loss_d_metric: 0.789001
+Train Iter: 20100	Loss_d_metric: 0.819656
+Train Iter: 20120	Loss_d_metric: 0.789452
+Train Iter: 20140	Loss_d_metric: 0.802412
+Train Iter: 20160	Loss_d_metric: 0.831293
+Train Iter: 20180	Loss_d_metric: 0.823023
+Train Iter: 20200	Loss_d_metric: 0.799636
+Train Iter: 20220	Loss_d_metric: 0.770299
+Train Iter: 20240	Loss_d_metric: 0.796760
+Train Iter: 20260	Loss_d_metric: 0.804490
+Train Iter: 20280	Loss_d_metric: 0.791240
+Train Iter: 20300	Loss_d_metric: 0.826447
+Train Iter: 20320	Loss_d_metric: 0.808144
+Train Iter: 20340	Loss_d_metric: 0.831904
+Train Iter: 20360	Loss_d_metric: 0.815842
+Train Iter: 20380	Loss_d_metric: 0.794165
+Train Iter: 20400	Loss_d_metric: 0.807591
+Train Iter: 20420	Loss_d_metric: 0.807656
+Train Iter: 20440	Loss_d_metric: 0.792517
+Train Iter: 20460	Loss_d_metric: 0.797591
+Train Iter: 20480	Loss_d_metric: 0.786041
+Train Iter: 20500	Loss_d_metric: 0.801787
+Train Iter: 20520	Loss_d_metric: 0.771590
+Train Iter: 20540	Loss_d_metric: 0.754981
+Train Iter: 20560	Loss_d_metric: 0.768190
+Train Iter: 20580	Loss_d_metric: 0.801875
+Train Iter: 20600	Loss_d_metric: 0.783305
+Train Iter: 20620	Loss_d_metric: 0.792225
+Train Iter: 20640	Loss_d_metric: 0.786348
+Train Iter: 20660	Loss_d_metric: 0.804108
+Train Iter: 20680	Loss_d_metric: 0.766878
+Train Iter: 20700	Loss_d_metric: 0.788741
+Train Iter: 20720	Loss_d_metric: 0.775786
+Train Iter: 20740	Loss_d_metric: 0.801701
+Train Iter: 20760	Loss_d_metric: 0.801591
+Train Iter: 20780	Loss_d_metric: 0.784066
+Train Iter: 20800	Loss_d_metric: 0.822583
+Train Iter: 20820	Loss_d_metric: 0.796118
+Train Iter: 20840	Loss_d_metric: 0.803947
+Train Iter: 20860	Loss_d_metric: 0.778960
+Train Iter: 20880	Loss_d_metric: 0.781764
+Train Iter: 20900	Loss_d_metric: 0.818825
+Train Iter: 20920	Loss_d_metric: 0.782892
+Train Iter: 20940	Loss_d_metric: 0.773841
+Train Iter: 20960	Loss_d_metric: 0.773690
+Train Iter: 20980	Loss_d_metric: 0.810462
+Train Iter: 21000	Loss_d_metric: 0.774890
+Train Iter: 21020	Loss_d_metric: 0.819512
+Train Iter: 21040	Loss_d_metric: 0.771610
+Train Iter: 21060	Loss_d_metric: 0.808167
+Train Iter: 21080	Loss_d_metric: 0.789638
+Train Iter: 21100	Loss_d_metric: 0.791676
+Train Iter: 21120	Loss_d_metric: 0.784738
+Train Iter: 21140	Loss_d_metric: 0.758458
+Train Iter: 21160	Loss_d_metric: 0.768082
+Train Iter: 21180	Loss_d_metric: 0.737778
+Train Iter: 21200	Loss_d_metric: 0.753426
+Train Iter: 21220	Loss_d_metric: 0.812494
+Train Iter: 21240	Loss_d_metric: 0.821016
+Train Iter: 21260	Loss_d_metric: 0.782710
+Train Iter: 21280	Loss_d_metric: 0.773725
+Train Iter: 21300	Loss_d_metric: 0.793157
+Train Iter: 21320	Loss_d_metric: 0.783107
+Train Iter: 21340	Loss_d_metric: 0.780580
+Train Iter: 21360	Loss_d_metric: 0.765566
+Train Iter: 21380	Loss_d_metric: 0.779388
+Train Iter: 21400	Loss_d_metric: 0.798735
+Train Iter: 21420	Loss_d_metric: 0.782870
+Train Iter: 21440	Loss_d_metric: 0.841648
+Train Iter: 21460	Loss_d_metric: 0.803138
+Train Iter: 21480	Loss_d_metric: 0.764970
+Train Iter: 21500	Loss_d_metric: 0.763505
+Train Iter: 21520	Loss_d_metric: 0.785556
+Train Iter: 21540	Loss_d_metric: 0.767036
+Train Iter: 21560	Loss_d_metric: 0.783099
+Train Iter: 21580	Loss_d_metric: 0.779422
+Train Iter: 21600	Loss_d_metric: 0.784835
+Train Iter: 21620	Loss_d_metric: 0.776264
+Train Iter: 21640	Loss_d_metric: 0.780441
+Train Iter: 21660	Loss_d_metric: 0.828090
+Train Iter: 21680	Loss_d_metric: 0.806143
+Train Iter: 21700	Loss_d_metric: 0.794343
+Train Iter: 21720	Loss_d_metric: 0.764644
+Train Iter: 21740	Loss_d_metric: 0.772001
+Train Iter: 21760	Loss_d_metric: 0.734563
+Train Iter: 21780	Loss_d_metric: 0.789623
+Train Iter: 21800	Loss_d_metric: 0.795793
+Train Iter: 21820	Loss_d_metric: 0.744804
+Train Iter: 21840	Loss_d_metric: 0.770504
+Train Iter: 21860	Loss_d_metric: 0.808568
+Train Iter: 21880	Loss_d_metric: 0.781838
+Train Iter: 21900	Loss_d_metric: 0.801772
+Train Iter: 21920	Loss_d_metric: 0.783869
+Train Iter: 21940	Loss_d_metric: 0.776773
+Train Iter: 21960	Loss_d_metric: 0.801593
+Train Iter: 21980	Loss_d_metric: 0.805044
+
+**** TESTING WITH val ***
+471 correct from 1000 	Accuracy: 47.100%)
+976 correct from 2000 	Accuracy: 48.800%)
+1474 correct from 3000 	Accuracy: 49.133%)
+1960 correct from 4000 	Accuracy: 49.000%)
+2441 correct from 5000 	Accuracy: 48.820%)
+2929 correct from 6000 	Accuracy: 48.817%)
+3423 correct from 7000 	Accuracy: 48.900%)
+3916 correct from 8000 	Accuracy: 48.950%)
+4431 correct from 9000 	Accuracy: 49.233%)
+4923 correct from 10000 	Accuracy: 49.230%)
+5415 correct from 11000 	Accuracy: 49.227%)
+5922 correct from 12000 	Accuracy: 49.350%)
+6417 correct from 13000 	Accuracy: 49.362%)
+6917 correct from 14000 	Accuracy: 49.407%)
+7395 correct from 15000 	Accuracy: 49.300%)
+7395 correct from 15000 	Accuracy: 49.300%)
+*** TEST FINISHED ***
+
+Best test accuracy 49.5733 
+
+Train Iter: 22000	Loss_d_metric: 0.754563
+Train Iter: 22020	Loss_d_metric: 0.777756
+Train Iter: 22040	Loss_d_metric: 0.759778
+Train Iter: 22060	Loss_d_metric: 0.765958
+Train Iter: 22080	Loss_d_metric: 0.779341
+Train Iter: 22100	Loss_d_metric: 0.742119
+Train Iter: 22120	Loss_d_metric: 0.779657
+Train Iter: 22140	Loss_d_metric: 0.771307
+Train Iter: 22160	Loss_d_metric: 0.756245
+Train Iter: 22180	Loss_d_metric: 0.761570
+Train Iter: 22200	Loss_d_metric: 0.755180
+Train Iter: 22220	Loss_d_metric: 0.778722
+Train Iter: 22240	Loss_d_metric: 0.764113
+Train Iter: 22260	Loss_d_metric: 0.762199
+Train Iter: 22280	Loss_d_metric: 0.733418
+Train Iter: 22300	Loss_d_metric: 0.768697
+Train Iter: 22320	Loss_d_metric: 0.774656
+Train Iter: 22340	Loss_d_metric: 0.807990
+Train Iter: 22360	Loss_d_metric: 0.771966
+Train Iter: 22380	Loss_d_metric: 0.743710
+Train Iter: 22400	Loss_d_metric: 0.791438
+Train Iter: 22420	Loss_d_metric: 0.770154
+Train Iter: 22440	Loss_d_metric: 0.764819
+Train Iter: 22460	Loss_d_metric: 0.744888
+Train Iter: 22480	Loss_d_metric: 0.794732
+Train Iter: 22500	Loss_d_metric: 0.794419
+Train Iter: 22520	Loss_d_metric: 0.763810
+Train Iter: 22540	Loss_d_metric: 0.727374
+Train Iter: 22560	Loss_d_metric: 0.724674
+Train Iter: 22580	Loss_d_metric: 0.760568
+Train Iter: 22600	Loss_d_metric: 0.761284
+Train Iter: 22620	Loss_d_metric: 0.773676
+Train Iter: 22640	Loss_d_metric: 0.789005
+Train Iter: 22660	Loss_d_metric: 0.791521
+Train Iter: 22680	Loss_d_metric: 0.758023
+Train Iter: 22700	Loss_d_metric: 0.785835
+Train Iter: 22720	Loss_d_metric: 0.739710
+Train Iter: 22740	Loss_d_metric: 0.785509
+Train Iter: 22760	Loss_d_metric: 0.788982
+Train Iter: 22780	Loss_d_metric: 0.733944
+Train Iter: 22800	Loss_d_metric: 0.746980
+Train Iter: 22820	Loss_d_metric: 0.751397
+Train Iter: 22840	Loss_d_metric: 0.741152
+Train Iter: 22860	Loss_d_metric: 0.747281
+Train Iter: 22880	Loss_d_metric: 0.742996
+Train Iter: 22900	Loss_d_metric: 0.780447
+Train Iter: 22920	Loss_d_metric: 0.753048
+Train Iter: 22940	Loss_d_metric: 0.751025
+Train Iter: 22960	Loss_d_metric: 0.723330
+Train Iter: 22980	Loss_d_metric: 0.733035
+Train Iter: 23000	Loss_d_metric: 0.757625
+Train Iter: 23020	Loss_d_metric: 0.741171
+Train Iter: 23040	Loss_d_metric: 0.730979
+Train Iter: 23060	Loss_d_metric: 0.768895
+Train Iter: 23080	Loss_d_metric: 0.754491
+Train Iter: 23100	Loss_d_metric: 0.726173
+Train Iter: 23120	Loss_d_metric: 0.826423
+Train Iter: 23140	Loss_d_metric: 0.760681
+Train Iter: 23160	Loss_d_metric: 0.735564
+Train Iter: 23180	Loss_d_metric: 0.745001
+Train Iter: 23200	Loss_d_metric: 0.748594
+Train Iter: 23220	Loss_d_metric: 0.759140
+Train Iter: 23240	Loss_d_metric: 0.798615
+Train Iter: 23260	Loss_d_metric: 0.764887
+Train Iter: 23280	Loss_d_metric: 0.736936
+Train Iter: 23300	Loss_d_metric: 0.711370
+Train Iter: 23320	Loss_d_metric: 0.765558
+Train Iter: 23340	Loss_d_metric: 0.759668
+Train Iter: 23360	Loss_d_metric: 0.753976
+Train Iter: 23380	Loss_d_metric: 0.798170
+Train Iter: 23400	Loss_d_metric: 0.787798
+Train Iter: 23420	Loss_d_metric: 0.740168
+Train Iter: 23440	Loss_d_metric: 0.727725
+Train Iter: 23460	Loss_d_metric: 0.802391
+Train Iter: 23480	Loss_d_metric: 0.750005
+Train Iter: 23500	Loss_d_metric: 0.763297
+Train Iter: 23520	Loss_d_metric: 0.746366
+Train Iter: 23540	Loss_d_metric: 0.748880
+Train Iter: 23560	Loss_d_metric: 0.791404
+Train Iter: 23580	Loss_d_metric: 0.708991
+Train Iter: 23600	Loss_d_metric: 0.775043
+Train Iter: 23620	Loss_d_metric: 0.715008
+Train Iter: 23640	Loss_d_metric: 0.743882
+Train Iter: 23660	Loss_d_metric: 0.706357
+Train Iter: 23680	Loss_d_metric: 0.746393
+Train Iter: 23700	Loss_d_metric: 0.745915
+Train Iter: 23720	Loss_d_metric: 0.750058
+Train Iter: 23740	Loss_d_metric: 0.743466
+Train Iter: 23760	Loss_d_metric: 0.749238
+Train Iter: 23780	Loss_d_metric: 0.745137
+Train Iter: 23800	Loss_d_metric: 0.734957
+Train Iter: 23820	Loss_d_metric: 0.783221
+Train Iter: 23840	Loss_d_metric: 0.710673
+Train Iter: 23860	Loss_d_metric: 0.744313
+Train Iter: 23880	Loss_d_metric: 0.757603
+Train Iter: 23900	Loss_d_metric: 0.748123
+Train Iter: 23920	Loss_d_metric: 0.731820
+Train Iter: 23940	Loss_d_metric: 0.743224
+Train Iter: 23960	Loss_d_metric: 0.765601
+Train Iter: 23980	Loss_d_metric: 0.741065
+
+**** TESTING WITH val ***
+492 correct from 1000 	Accuracy: 49.200%)
+967 correct from 2000 	Accuracy: 48.350%)
+1433 correct from 3000 	Accuracy: 47.767%)
+1911 correct from 4000 	Accuracy: 47.775%)
+2399 correct from 5000 	Accuracy: 47.980%)
+2883 correct from 6000 	Accuracy: 48.050%)
+3337 correct from 7000 	Accuracy: 47.671%)
+3808 correct from 8000 	Accuracy: 47.600%)
+4282 correct from 9000 	Accuracy: 47.578%)
+4742 correct from 10000 	Accuracy: 47.420%)
+5247 correct from 11000 	Accuracy: 47.700%)
+5741 correct from 12000 	Accuracy: 47.842%)
+6225 correct from 13000 	Accuracy: 47.885%)
+6737 correct from 14000 	Accuracy: 48.121%)
+7229 correct from 15000 	Accuracy: 48.193%)
+7229 correct from 15000 	Accuracy: 48.193%)
+*** TEST FINISHED ***
+
+Best test accuracy 49.5733 
+
+Train Iter: 24000	Loss_d_metric: 0.737687
+Train Iter: 24020	Loss_d_metric: 0.782457
+Train Iter: 24040	Loss_d_metric: 0.728498
+Train Iter: 24060	Loss_d_metric: 0.731871
+Train Iter: 24080	Loss_d_metric: 0.753762
+Train Iter: 24100	Loss_d_metric: 0.748513
+Train Iter: 24120	Loss_d_metric: 0.733780
+Train Iter: 24140	Loss_d_metric: 0.712268
+Train Iter: 24160	Loss_d_metric: 0.726815
+Train Iter: 24180	Loss_d_metric: 0.734434
+Train Iter: 24200	Loss_d_metric: 0.762597
+Train Iter: 24220	Loss_d_metric: 0.714509
+Train Iter: 24240	Loss_d_metric: 0.704129
+Train Iter: 24260	Loss_d_metric: 0.761700
+Train Iter: 24280	Loss_d_metric: 0.755608
+Train Iter: 24300	Loss_d_metric: 0.720940
+Train Iter: 24320	Loss_d_metric: 0.719657
+Train Iter: 24340	Loss_d_metric: 0.721201
+Train Iter: 24360	Loss_d_metric: 0.724163
+Train Iter: 24380	Loss_d_metric: 0.752773
+Train Iter: 24400	Loss_d_metric: 0.710328
+Train Iter: 24420	Loss_d_metric: 0.741793
+Train Iter: 24440	Loss_d_metric: 0.756693
+Train Iter: 24460	Loss_d_metric: 0.721625
+Train Iter: 24480	Loss_d_metric: 0.762932
+Train Iter: 24500	Loss_d_metric: 0.708174
+Train Iter: 24520	Loss_d_metric: 0.716511
+Train Iter: 24540	Loss_d_metric: 0.730244
+Train Iter: 24560	Loss_d_metric: 0.720182
+Train Iter: 24580	Loss_d_metric: 0.688306
+Train Iter: 24600	Loss_d_metric: 0.747485
+Train Iter: 24620	Loss_d_metric: 0.727226
+Train Iter: 24640	Loss_d_metric: 0.737167
+Train Iter: 24660	Loss_d_metric: 0.713917
+Train Iter: 24680	Loss_d_metric: 0.742760
+Train Iter: 24700	Loss_d_metric: 0.731209
+Train Iter: 24720	Loss_d_metric: 0.777790
+Train Iter: 24740	Loss_d_metric: 0.758668
+Train Iter: 24760	Loss_d_metric: 0.723267
+Train Iter: 24780	Loss_d_metric: 0.811330
+Train Iter: 24800	Loss_d_metric: 0.696172
+Train Iter: 24820	Loss_d_metric: 0.736041
+Train Iter: 24840	Loss_d_metric: 0.722122
+Train Iter: 24860	Loss_d_metric: 0.739952
+Train Iter: 24880	Loss_d_metric: 0.730806
+Train Iter: 24900	Loss_d_metric: 0.734117
+Train Iter: 24920	Loss_d_metric: 0.700963
+Train Iter: 24940	Loss_d_metric: 0.729152
+Train Iter: 24960	Loss_d_metric: 0.722965
+Train Iter: 24980	Loss_d_metric: 0.711717
+Train Iter: 25000	Loss_d_metric: 0.698846
+Train Iter: 25020	Loss_d_metric: 0.717987
+Train Iter: 25040	Loss_d_metric: 0.722712
+Train Iter: 25060	Loss_d_metric: 0.737456
+Train Iter: 25080	Loss_d_metric: 0.718778
+Train Iter: 25100	Loss_d_metric: 0.697033
+Train Iter: 25120	Loss_d_metric: 0.716910
+Train Iter: 25140	Loss_d_metric: 0.721604
+Train Iter: 25160	Loss_d_metric: 0.765455
+Train Iter: 25180	Loss_d_metric: 0.744082
+Train Iter: 25200	Loss_d_metric: 0.719978
+Train Iter: 25220	Loss_d_metric: 0.721671
+Train Iter: 25240	Loss_d_metric: 0.725637
+Train Iter: 25260	Loss_d_metric: 0.730906
+Train Iter: 25280	Loss_d_metric: 0.736905
+Train Iter: 25300	Loss_d_metric: 0.725557
+Train Iter: 25320	Loss_d_metric: 0.713600
+Train Iter: 25340	Loss_d_metric: 0.740913
+Train Iter: 25360	Loss_d_metric: 0.742954
+Train Iter: 25380	Loss_d_metric: 0.722897
+Train Iter: 25400	Loss_d_metric: 0.726911
+Train Iter: 25420	Loss_d_metric: 0.711538
+Train Iter: 25440	Loss_d_metric: 0.725259
+Train Iter: 25460	Loss_d_metric: 0.728572
+Train Iter: 25480	Loss_d_metric: 0.728364
+Train Iter: 25500	Loss_d_metric: 0.722076
+Train Iter: 25520	Loss_d_metric: 0.691344
+Train Iter: 25540	Loss_d_metric: 0.752729
+Train Iter: 25560	Loss_d_metric: 0.729700
+Train Iter: 25580	Loss_d_metric: 0.763046
+Train Iter: 25600	Loss_d_metric: 0.734945
+Train Iter: 25620	Loss_d_metric: 0.699081
+Train Iter: 25640	Loss_d_metric: 0.720144
+Train Iter: 25660	Loss_d_metric: 0.777027
+Train Iter: 25680	Loss_d_metric: 0.734232
+Train Iter: 25700	Loss_d_metric: 0.722013
+Train Iter: 25720	Loss_d_metric: 0.701991
+Train Iter: 25740	Loss_d_metric: 0.725843
+Train Iter: 25760	Loss_d_metric: 0.712657
+Train Iter: 25780	Loss_d_metric: 0.710377
+Train Iter: 25800	Loss_d_metric: 0.707926
+Train Iter: 25820	Loss_d_metric: 0.692609
+Train Iter: 25840	Loss_d_metric: 0.755107
+Train Iter: 25860	Loss_d_metric: 0.775436
+Train Iter: 25880	Loss_d_metric: 0.738956
+Train Iter: 25900	Loss_d_metric: 0.737854
+Train Iter: 25920	Loss_d_metric: 0.731815
+Train Iter: 25940	Loss_d_metric: 0.684974
+Train Iter: 25960	Loss_d_metric: 0.715860
+Train Iter: 25980	Loss_d_metric: 0.731006
+
+**** TESTING WITH val ***
+479 correct from 1000 	Accuracy: 47.900%)
+941 correct from 2000 	Accuracy: 47.050%)
+1408 correct from 3000 	Accuracy: 46.933%)
+1900 correct from 4000 	Accuracy: 47.500%)
+2398 correct from 5000 	Accuracy: 47.960%)
+2897 correct from 6000 	Accuracy: 48.283%)
+3385 correct from 7000 	Accuracy: 48.357%)
+3896 correct from 8000 	Accuracy: 48.700%)
+4370 correct from 9000 	Accuracy: 48.556%)
+4847 correct from 10000 	Accuracy: 48.470%)
+5319 correct from 11000 	Accuracy: 48.355%)
+5791 correct from 12000 	Accuracy: 48.258%)
+6276 correct from 13000 	Accuracy: 48.277%)
+6786 correct from 14000 	Accuracy: 48.471%)
+7276 correct from 15000 	Accuracy: 48.507%)
+7276 correct from 15000 	Accuracy: 48.507%)
+*** TEST FINISHED ***
+
+Best test accuracy 49.5733 
+
+Train Iter: 26000	Loss_d_metric: 0.732412
+Train Iter: 26020	Loss_d_metric: 0.668676
+Train Iter: 26040	Loss_d_metric: 0.700974
+Train Iter: 26060	Loss_d_metric: 0.718593
+Train Iter: 26080	Loss_d_metric: 0.729773
+Train Iter: 26100	Loss_d_metric: 0.753350
+Train Iter: 26120	Loss_d_metric: 0.703417
+Train Iter: 26140	Loss_d_metric: 0.689275
+Train Iter: 26160	Loss_d_metric: 0.733380
+Train Iter: 26180	Loss_d_metric: 0.716235
+Train Iter: 26200	Loss_d_metric: 0.712443
+Train Iter: 26220	Loss_d_metric: 0.721656
+Train Iter: 26240	Loss_d_metric: 0.675742
+Train Iter: 26260	Loss_d_metric: 0.718165
+Train Iter: 26280	Loss_d_metric: 0.703514
+Train Iter: 26300	Loss_d_metric: 0.719074
+Train Iter: 26320	Loss_d_metric: 0.738330
+Train Iter: 26340	Loss_d_metric: 0.670238
+Train Iter: 26360	Loss_d_metric: 0.705637
+Train Iter: 26380	Loss_d_metric: 0.720769
+Train Iter: 26400	Loss_d_metric: 0.676331
+Train Iter: 26420	Loss_d_metric: 0.736619
+Train Iter: 26440	Loss_d_metric: 0.743983
+Train Iter: 26460	Loss_d_metric: 0.700284
+Train Iter: 26480	Loss_d_metric: 0.706211
+Train Iter: 26500	Loss_d_metric: 0.713555
+Train Iter: 26520	Loss_d_metric: 0.700657
+Train Iter: 26540	Loss_d_metric: 0.731508
+Train Iter: 26560	Loss_d_metric: 0.706118
+Train Iter: 26580	Loss_d_metric: 0.677540
+Train Iter: 26600	Loss_d_metric: 0.684941
+Train Iter: 26620	Loss_d_metric: 0.721381
+Train Iter: 26640	Loss_d_metric: 0.741476
+Train Iter: 26660	Loss_d_metric: 0.717478
+Train Iter: 26680	Loss_d_metric: 0.711505
+Train Iter: 26700	Loss_d_metric: 0.720931
+Train Iter: 26720	Loss_d_metric: 0.683885
+Train Iter: 26740	Loss_d_metric: 0.744630
+Train Iter: 26760	Loss_d_metric: 0.688873
+Train Iter: 26780	Loss_d_metric: 0.712479
+Train Iter: 26800	Loss_d_metric: 0.715024
+Train Iter: 26820	Loss_d_metric: 0.679246
+Train Iter: 26840	Loss_d_metric: 0.732115
+Train Iter: 26860	Loss_d_metric: 0.712218
+Train Iter: 26880	Loss_d_metric: 0.701991
+Train Iter: 26900	Loss_d_metric: 0.745302
+Train Iter: 26920	Loss_d_metric: 0.703205
+Train Iter: 26940	Loss_d_metric: 0.726453
+Train Iter: 26960	Loss_d_metric: 0.725925
+Train Iter: 26980	Loss_d_metric: 0.709133
+Train Iter: 27000	Loss_d_metric: 0.696183
+Train Iter: 27020	Loss_d_metric: 0.674582
+Train Iter: 27040	Loss_d_metric: 0.729489
+Train Iter: 27060	Loss_d_metric: 0.682086
+Train Iter: 27080	Loss_d_metric: 0.700888
+Train Iter: 27100	Loss_d_metric: 0.712267
+Train Iter: 27120	Loss_d_metric: 0.670733
+Train Iter: 27140	Loss_d_metric: 0.701967
+Train Iter: 27160	Loss_d_metric: 0.683858
+Train Iter: 27180	Loss_d_metric: 0.686049
+Train Iter: 27200	Loss_d_metric: 0.695381
+Train Iter: 27220	Loss_d_metric: 0.677682
+Train Iter: 27240	Loss_d_metric: 0.700796
+Train Iter: 27260	Loss_d_metric: 0.701805
+Train Iter: 27280	Loss_d_metric: 0.661023
+Train Iter: 27300	Loss_d_metric: 0.701103
+Train Iter: 27320	Loss_d_metric: 0.680866
+Train Iter: 27340	Loss_d_metric: 0.701716
+Train Iter: 27360	Loss_d_metric: 0.703041
+Train Iter: 27380	Loss_d_metric: 0.702803
+Train Iter: 27400	Loss_d_metric: 0.710022
+Train Iter: 27420	Loss_d_metric: 0.686712
+Train Iter: 27440	Loss_d_metric: 0.706019
+Train Iter: 27460	Loss_d_metric: 0.665705
+Train Iter: 27480	Loss_d_metric: 0.668873
+Train Iter: 27500	Loss_d_metric: 0.730468
+Train Iter: 27520	Loss_d_metric: 0.695132
+Train Iter: 27540	Loss_d_metric: 0.713041
+Train Iter: 27560	Loss_d_metric: 0.703069
+Train Iter: 27580	Loss_d_metric: 0.717774
+Train Iter: 27600	Loss_d_metric: 0.712670
+Train Iter: 27620	Loss_d_metric: 0.669864
+Train Iter: 27640	Loss_d_metric: 0.718581
+Train Iter: 27660	Loss_d_metric: 0.665415
+Train Iter: 27680	Loss_d_metric: 0.666674
+Train Iter: 27700	Loss_d_metric: 0.677332
+Train Iter: 27720	Loss_d_metric: 0.707057
+Train Iter: 27740	Loss_d_metric: 0.713051
+Train Iter: 27760	Loss_d_metric: 0.710081
+Train Iter: 27780	Loss_d_metric: 0.690184
+Train Iter: 27800	Loss_d_metric: 0.679502
+Train Iter: 27820	Loss_d_metric: 0.684066
+Train Iter: 27840	Loss_d_metric: 0.693109
+Train Iter: 27860	Loss_d_metric: 0.702766
+Train Iter: 27880	Loss_d_metric: 0.680625
+Train Iter: 27900	Loss_d_metric: 0.686148
+Train Iter: 27920	Loss_d_metric: 0.689714
+Train Iter: 27940	Loss_d_metric: 0.678265
+Train Iter: 27960	Loss_d_metric: 0.685407
+Train Iter: 27980	Loss_d_metric: 0.649004
+
+**** TESTING WITH val ***
+461 correct from 1000 	Accuracy: 46.100%)
+946 correct from 2000 	Accuracy: 47.300%)
+1431 correct from 3000 	Accuracy: 47.700%)
+1925 correct from 4000 	Accuracy: 48.125%)
+2412 correct from 5000 	Accuracy: 48.240%)
+2903 correct from 6000 	Accuracy: 48.383%)
+3401 correct from 7000 	Accuracy: 48.586%)
+3895 correct from 8000 	Accuracy: 48.688%)
+4383 correct from 9000 	Accuracy: 48.700%)
+4888 correct from 10000 	Accuracy: 48.880%)
+5350 correct from 11000 	Accuracy: 48.636%)
+5841 correct from 12000 	Accuracy: 48.675%)
+6297 correct from 13000 	Accuracy: 48.438%)
+6786 correct from 14000 	Accuracy: 48.471%)
+7273 correct from 15000 	Accuracy: 48.487%)
+7273 correct from 15000 	Accuracy: 48.487%)
+*** TEST FINISHED ***
+
+Best test accuracy 49.5733 
+
+Train Iter: 28000	Loss_d_metric: 0.714623
+Train Iter: 28020	Loss_d_metric: 0.688667
+Train Iter: 28040	Loss_d_metric: 0.691188
+Train Iter: 28060	Loss_d_metric: 0.706993
+Train Iter: 28080	Loss_d_metric: 0.712578
+Train Iter: 28100	Loss_d_metric: 0.663960
+Train Iter: 28120	Loss_d_metric: 0.688953
+Train Iter: 28140	Loss_d_metric: 0.675074
+Train Iter: 28160	Loss_d_metric: 0.684380
+Train Iter: 28180	Loss_d_metric: 0.706897
+Train Iter: 28200	Loss_d_metric: 0.667529
+Train Iter: 28220	Loss_d_metric: 0.754386
+Train Iter: 28240	Loss_d_metric: 0.716959
+Train Iter: 28260	Loss_d_metric: 0.685085
+Train Iter: 28280	Loss_d_metric: 0.675280
+Train Iter: 28300	Loss_d_metric: 0.663871
+Train Iter: 28320	Loss_d_metric: 0.686130
+Train Iter: 28340	Loss_d_metric: 0.710138
+Train Iter: 28360	Loss_d_metric: 0.673154
+Train Iter: 28380	Loss_d_metric: 0.693877
+Train Iter: 28400	Loss_d_metric: 0.667420
+Train Iter: 28420	Loss_d_metric: 0.659449
+Train Iter: 28440	Loss_d_metric: 0.703888
+Train Iter: 28460	Loss_d_metric: 0.704181
+Train Iter: 28480	Loss_d_metric: 0.710794
+Train Iter: 28500	Loss_d_metric: 0.703359
+Train Iter: 28520	Loss_d_metric: 0.734655
+Train Iter: 28540	Loss_d_metric: 0.676177
+Train Iter: 28560	Loss_d_metric: 0.712509
+Train Iter: 28580	Loss_d_metric: 0.695849
+Train Iter: 28600	Loss_d_metric: 0.669443
+Train Iter: 28620	Loss_d_metric: 0.685403
+Train Iter: 28640	Loss_d_metric: 0.628630
+Train Iter: 28660	Loss_d_metric: 0.702505
+Train Iter: 28680	Loss_d_metric: 0.703448
+Train Iter: 28700	Loss_d_metric: 0.681255
+Train Iter: 28720	Loss_d_metric: 0.691924
+Train Iter: 28740	Loss_d_metric: 0.674895
+Train Iter: 28760	Loss_d_metric: 0.692211
+Train Iter: 28780	Loss_d_metric: 0.678524
+Train Iter: 28800	Loss_d_metric: 0.683789
+Train Iter: 28820	Loss_d_metric: 0.680260
+Train Iter: 28840	Loss_d_metric: 0.669769
+Train Iter: 28860	Loss_d_metric: 0.701765
+Train Iter: 28880	Loss_d_metric: 0.685911
+Train Iter: 28900	Loss_d_metric: 0.701891
+Train Iter: 28920	Loss_d_metric: 0.658536
+Train Iter: 28940	Loss_d_metric: 0.652003
+Train Iter: 28960	Loss_d_metric: 0.668472
+Train Iter: 28980	Loss_d_metric: 0.708773
+Train Iter: 29000	Loss_d_metric: 0.676006
+Train Iter: 29020	Loss_d_metric: 0.711362
+Train Iter: 29040	Loss_d_metric: 0.680914
+Train Iter: 29060	Loss_d_metric: 0.717341
+Train Iter: 29080	Loss_d_metric: 0.682614
+Train Iter: 29100	Loss_d_metric: 0.658920
+Train Iter: 29120	Loss_d_metric: 0.669043
+Train Iter: 29140	Loss_d_metric: 0.668247
+Train Iter: 29160	Loss_d_metric: 0.694834
+Train Iter: 29180	Loss_d_metric: 0.666178
+Train Iter: 29200	Loss_d_metric: 0.674085
+Train Iter: 29220	Loss_d_metric: 0.699552
+Train Iter: 29240	Loss_d_metric: 0.672039
+Train Iter: 29260	Loss_d_metric: 0.705925
+Train Iter: 29280	Loss_d_metric: 0.675802
+Train Iter: 29300	Loss_d_metric: 0.680516
+Train Iter: 29320	Loss_d_metric: 0.668906
+Train Iter: 29340	Loss_d_metric: 0.654729
+Train Iter: 29360	Loss_d_metric: 0.685046
+Train Iter: 29380	Loss_d_metric: 0.632530
+Train Iter: 29400	Loss_d_metric: 0.652350
+Train Iter: 29420	Loss_d_metric: 0.678157
+Train Iter: 29440	Loss_d_metric: 0.674622
+Train Iter: 29460	Loss_d_metric: 0.675492
+Train Iter: 29480	Loss_d_metric: 0.640086
+Train Iter: 29500	Loss_d_metric: 0.681691
+Train Iter: 29520	Loss_d_metric: 0.663428
+Train Iter: 29540	Loss_d_metric: 0.650755
+Train Iter: 29560	Loss_d_metric: 0.703186
+Train Iter: 29580	Loss_d_metric: 0.666680
+Train Iter: 29600	Loss_d_metric: 0.654358
+Train Iter: 29620	Loss_d_metric: 0.629978
+Train Iter: 29640	Loss_d_metric: 0.674992
+Train Iter: 29660	Loss_d_metric: 0.680655
+Train Iter: 29680	Loss_d_metric: 0.675143
+Train Iter: 29700	Loss_d_metric: 0.658794
+Train Iter: 29720	Loss_d_metric: 0.650703
+Train Iter: 29740	Loss_d_metric: 0.683540
+Train Iter: 29760	Loss_d_metric: 0.682206
+Train Iter: 29780	Loss_d_metric: 0.637918
+Train Iter: 29800	Loss_d_metric: 0.668844
+Train Iter: 29820	Loss_d_metric: 0.645682
+Train Iter: 29840	Loss_d_metric: 0.667287
+Train Iter: 29860	Loss_d_metric: 0.657334
+Train Iter: 29880	Loss_d_metric: 0.707357
+Train Iter: 29900	Loss_d_metric: 0.672216
+Train Iter: 29920	Loss_d_metric: 0.642906
+Train Iter: 29940	Loss_d_metric: 0.696250
+Train Iter: 29960	Loss_d_metric: 0.690413
+Train Iter: 29980	Loss_d_metric: 0.685369
+
+**** TESTING WITH val ***
+515 correct from 1000 	Accuracy: 51.500%)
+984 correct from 2000 	Accuracy: 49.200%)
+1479 correct from 3000 	Accuracy: 49.300%)
+1992 correct from 4000 	Accuracy: 49.800%)
+2488 correct from 5000 	Accuracy: 49.760%)
+2963 correct from 6000 	Accuracy: 49.383%)
+3453 correct from 7000 	Accuracy: 49.329%)
+3897 correct from 8000 	Accuracy: 48.712%)
+4421 correct from 9000 	Accuracy: 49.122%)
+4896 correct from 10000 	Accuracy: 48.960%)
+5398 correct from 11000 	Accuracy: 49.073%)
+5889 correct from 12000 	Accuracy: 49.075%)
+6380 correct from 13000 	Accuracy: 49.077%)
+6902 correct from 14000 	Accuracy: 49.300%)
+7402 correct from 15000 	Accuracy: 49.347%)
+7402 correct from 15000 	Accuracy: 49.347%)
+*** TEST FINISHED ***
+
+Best test accuracy 49.5733 
+
+Train Iter: 30000	Loss_d_metric: 0.657165
+Train Iter: 30020	Loss_d_metric: 0.661625
+Train Iter: 30040	Loss_d_metric: 0.687764
+Train Iter: 30060	Loss_d_metric: 0.692128
+Train Iter: 30080	Loss_d_metric: 0.647671
+Train Iter: 30100	Loss_d_metric: 0.645654
+Train Iter: 30120	Loss_d_metric: 0.694833
+Train Iter: 30140	Loss_d_metric: 0.649205
+Train Iter: 30160	Loss_d_metric: 0.676474
+Train Iter: 30180	Loss_d_metric: 0.663355
+Train Iter: 30200	Loss_d_metric: 0.686105
+Train Iter: 30220	Loss_d_metric: 0.701473
+Train Iter: 30240	Loss_d_metric: 0.690458
+Train Iter: 30260	Loss_d_metric: 0.663738
+Train Iter: 30280	Loss_d_metric: 0.644428
+Train Iter: 30300	Loss_d_metric: 0.678654
+Train Iter: 30320	Loss_d_metric: 0.678736
+Train Iter: 30340	Loss_d_metric: 0.696731
+Train Iter: 30360	Loss_d_metric: 0.634792
+Train Iter: 30380	Loss_d_metric: 0.696249
+Train Iter: 30400	Loss_d_metric: 0.702414
+Train Iter: 30420	Loss_d_metric: 0.684996
+Train Iter: 30440	Loss_d_metric: 0.662663
+Train Iter: 30460	Loss_d_metric: 0.686118
+Train Iter: 30480	Loss_d_metric: 0.667261
+Train Iter: 30500	Loss_d_metric: 0.672983
+Train Iter: 30520	Loss_d_metric: 0.665138
+Train Iter: 30540	Loss_d_metric: 0.676988
+Train Iter: 30560	Loss_d_metric: 0.695732
+Train Iter: 30580	Loss_d_metric: 0.663454
+Train Iter: 30600	Loss_d_metric: 0.677726
+Train Iter: 30620	Loss_d_metric: 0.665675
+Train Iter: 30640	Loss_d_metric: 0.662744
+Train Iter: 30660	Loss_d_metric: 0.648156
+Train Iter: 30680	Loss_d_metric: 0.693306
+Train Iter: 30700	Loss_d_metric: 0.645210
+Train Iter: 30720	Loss_d_metric: 0.683062
+Train Iter: 30740	Loss_d_metric: 0.674775
+Train Iter: 30760	Loss_d_metric: 0.652180
+Train Iter: 30780	Loss_d_metric: 0.678168
+Train Iter: 30800	Loss_d_metric: 0.674342
+Train Iter: 30820	Loss_d_metric: 0.648132
+Train Iter: 30840	Loss_d_metric: 0.675146
+Train Iter: 30860	Loss_d_metric: 0.671630
+Train Iter: 30880	Loss_d_metric: 0.629788
+Train Iter: 30900	Loss_d_metric: 0.620293
+Train Iter: 30920	Loss_d_metric: 0.646318
+Train Iter: 30940	Loss_d_metric: 0.643278
+Train Iter: 30960	Loss_d_metric: 0.702257
+Train Iter: 30980	Loss_d_metric: 0.657895
+Train Iter: 31000	Loss_d_metric: 0.677169
+Train Iter: 31020	Loss_d_metric: 0.675940
+Train Iter: 31040	Loss_d_metric: 0.703355
+Train Iter: 31060	Loss_d_metric: 0.653928
+Train Iter: 31080	Loss_d_metric: 0.639746
+Train Iter: 31100	Loss_d_metric: 0.644300
+Train Iter: 31120	Loss_d_metric: 0.652092
+Train Iter: 31140	Loss_d_metric: 0.596057
+Train Iter: 31160	Loss_d_metric: 0.653030
+Train Iter: 31180	Loss_d_metric: 0.668692
+Train Iter: 31200	Loss_d_metric: 0.654853
+Train Iter: 31220	Loss_d_metric: 0.618493
+Train Iter: 31240	Loss_d_metric: 0.642293
+Train Iter: 31260	Loss_d_metric: 0.652923
+Train Iter: 31280	Loss_d_metric: 0.667060
+Train Iter: 31300	Loss_d_metric: 0.665900
+Train Iter: 31320	Loss_d_metric: 0.648875
+Train Iter: 31340	Loss_d_metric: 0.673766
+Train Iter: 31360	Loss_d_metric: 0.663500
+Train Iter: 31380	Loss_d_metric: 0.663427
+Train Iter: 31400	Loss_d_metric: 0.646308
+Train Iter: 31420	Loss_d_metric: 0.666166
+Train Iter: 31440	Loss_d_metric: 0.647330
+Train Iter: 31460	Loss_d_metric: 0.607735
+Train Iter: 31480	Loss_d_metric: 0.669150
+Train Iter: 31500	Loss_d_metric: 0.685300
+Train Iter: 31520	Loss_d_metric: 0.660065
+Train Iter: 31540	Loss_d_metric: 0.654071
+Train Iter: 31560	Loss_d_metric: 0.701861
+Train Iter: 31580	Loss_d_metric: 0.645327
+Train Iter: 31600	Loss_d_metric: 0.624717
+Train Iter: 31620	Loss_d_metric: 0.632016
+Train Iter: 31640	Loss_d_metric: 0.629731
+Train Iter: 31660	Loss_d_metric: 0.634958
+Train Iter: 31680	Loss_d_metric: 0.676645
+Train Iter: 31700	Loss_d_metric: 0.599314
+Train Iter: 31720	Loss_d_metric: 0.649717
+Train Iter: 31740	Loss_d_metric: 0.650459
+Train Iter: 31760	Loss_d_metric: 0.643346
+Train Iter: 31780	Loss_d_metric: 0.666186
+Train Iter: 31800	Loss_d_metric: 0.676276
+Train Iter: 31820	Loss_d_metric: 0.643568
+Train Iter: 31840	Loss_d_metric: 0.677246
+Train Iter: 31860	Loss_d_metric: 0.667245
+Train Iter: 31880	Loss_d_metric: 0.645869
+Train Iter: 31900	Loss_d_metric: 0.649074
+Train Iter: 31920	Loss_d_metric: 0.622996
+Train Iter: 31940	Loss_d_metric: 0.654536
+Train Iter: 31960	Loss_d_metric: 0.634574
+Train Iter: 31980	Loss_d_metric: 0.649341
+
+**** TESTING WITH val ***
+475 correct from 1000 	Accuracy: 47.500%)
+954 correct from 2000 	Accuracy: 47.700%)
+1443 correct from 3000 	Accuracy: 48.100%)
+1923 correct from 4000 	Accuracy: 48.075%)
+2419 correct from 5000 	Accuracy: 48.380%)
+2935 correct from 6000 	Accuracy: 48.917%)
+3394 correct from 7000 	Accuracy: 48.486%)
+3872 correct from 8000 	Accuracy: 48.400%)
+4353 correct from 9000 	Accuracy: 48.367%)
+4822 correct from 10000 	Accuracy: 48.220%)
+5296 correct from 11000 	Accuracy: 48.145%)
+5782 correct from 12000 	Accuracy: 48.183%)
+6267 correct from 13000 	Accuracy: 48.208%)
+6739 correct from 14000 	Accuracy: 48.136%)
+7222 correct from 15000 	Accuracy: 48.147%)
+7222 correct from 15000 	Accuracy: 48.147%)
+*** TEST FINISHED ***
+
+Best test accuracy 49.5733 
+
+Train Iter: 32000	Loss_d_metric: 0.659356
+Train Iter: 32020	Loss_d_metric: 0.648460
+Train Iter: 32040	Loss_d_metric: 0.646520
+Train Iter: 32060	Loss_d_metric: 0.655407
+Train Iter: 32080	Loss_d_metric: 0.674445
+Train Iter: 32100	Loss_d_metric: 0.667044
+Train Iter: 32120	Loss_d_metric: 0.650302
+Train Iter: 32140	Loss_d_metric: 0.663565
+Train Iter: 32160	Loss_d_metric: 0.649315
+Train Iter: 32180	Loss_d_metric: 0.630319
+Train Iter: 32200	Loss_d_metric: 0.637332
+Train Iter: 32220	Loss_d_metric: 0.642902
+Train Iter: 32240	Loss_d_metric: 0.642578
+Train Iter: 32260	Loss_d_metric: 0.665138
+Train Iter: 32280	Loss_d_metric: 0.677849
+Train Iter: 32300	Loss_d_metric: 0.663605
+Train Iter: 32320	Loss_d_metric: 0.637045
+Train Iter: 32340	Loss_d_metric: 0.622616
+Train Iter: 32360	Loss_d_metric: 0.623877
+Train Iter: 32380	Loss_d_metric: 0.642434
+Train Iter: 32400	Loss_d_metric: 0.674591
+Train Iter: 32420	Loss_d_metric: 0.657736
+Train Iter: 32440	Loss_d_metric: 0.648420
+Train Iter: 32460	Loss_d_metric: 0.617428
+Train Iter: 32480	Loss_d_metric: 0.604424
+Train Iter: 32500	Loss_d_metric: 0.632885
+Train Iter: 32520	Loss_d_metric: 0.625845
+Train Iter: 32540	Loss_d_metric: 0.649064
+Train Iter: 32560	Loss_d_metric: 0.608261
+Train Iter: 32580	Loss_d_metric: 0.653331
+Train Iter: 32600	Loss_d_metric: 0.638888
+Train Iter: 32620	Loss_d_metric: 0.634429
+Train Iter: 32640	Loss_d_metric: 0.634436
+Train Iter: 32660	Loss_d_metric: 0.649308
+Train Iter: 32680	Loss_d_metric: 0.647250
+Train Iter: 32700	Loss_d_metric: 0.632892
+Train Iter: 32720	Loss_d_metric: 0.626511
+Train Iter: 32740	Loss_d_metric: 0.654123
+Train Iter: 32760	Loss_d_metric: 0.647573
+Train Iter: 32780	Loss_d_metric: 0.650698
+Train Iter: 32800	Loss_d_metric: 0.650053
+Train Iter: 32820	Loss_d_metric: 0.630678
+Train Iter: 32840	Loss_d_metric: 0.626481
+Train Iter: 32860	Loss_d_metric: 0.611906
+Train Iter: 32880	Loss_d_metric: 0.667982
+Train Iter: 32900	Loss_d_metric: 0.615528
+Train Iter: 32920	Loss_d_metric: 0.643897
+Train Iter: 32940	Loss_d_metric: 0.681068
+Train Iter: 32960	Loss_d_metric: 0.604829
+Train Iter: 32980	Loss_d_metric: 0.641108
+Train Iter: 33000	Loss_d_metric: 0.648602
+Train Iter: 33020	Loss_d_metric: 0.621929
+Train Iter: 33040	Loss_d_metric: 0.616955
+Train Iter: 33060	Loss_d_metric: 0.646548
+Train Iter: 33080	Loss_d_metric: 0.635008
+Train Iter: 33100	Loss_d_metric: 0.652188
+Train Iter: 33120	Loss_d_metric: 0.607649
+Train Iter: 33140	Loss_d_metric: 0.617163
+Train Iter: 33160	Loss_d_metric: 0.607826
+Train Iter: 33180	Loss_d_metric: 0.631790
+Train Iter: 33200	Loss_d_metric: 0.714426
+Train Iter: 33220	Loss_d_metric: 0.653013
+Train Iter: 33240	Loss_d_metric: 0.610764
+Train Iter: 33260	Loss_d_metric: 0.621430
+Train Iter: 33280	Loss_d_metric: 0.619116
+Train Iter: 33300	Loss_d_metric: 0.628390
+Train Iter: 33320	Loss_d_metric: 0.639542
+Train Iter: 33340	Loss_d_metric: 0.672983
+Train Iter: 33360	Loss_d_metric: 0.633244
+Train Iter: 33380	Loss_d_metric: 0.647903
+Train Iter: 33400	Loss_d_metric: 0.616718
+Train Iter: 33420	Loss_d_metric: 0.637195
+Train Iter: 33440	Loss_d_metric: 0.657471
+Train Iter: 33460	Loss_d_metric: 0.605033
+Train Iter: 33480	Loss_d_metric: 0.635751
+Train Iter: 33500	Loss_d_metric: 0.661844
+Train Iter: 33520	Loss_d_metric: 0.643520
+Train Iter: 33540	Loss_d_metric: 0.677255
+Train Iter: 33560	Loss_d_metric: 0.646159
+Train Iter: 33580	Loss_d_metric: 0.638476
+Train Iter: 33600	Loss_d_metric: 0.614323
+Train Iter: 33620	Loss_d_metric: 0.662126
+Train Iter: 33640	Loss_d_metric: 0.630414
+Train Iter: 33660	Loss_d_metric: 0.628136
+Train Iter: 33680	Loss_d_metric: 0.605014
+Train Iter: 33700	Loss_d_metric: 0.624590
+Train Iter: 33720	Loss_d_metric: 0.643634
+Train Iter: 33740	Loss_d_metric: 0.634737
+Train Iter: 33760	Loss_d_metric: 0.606581
+Train Iter: 33780	Loss_d_metric: 0.625107
+Train Iter: 33800	Loss_d_metric: 0.673008
+Train Iter: 33820	Loss_d_metric: 0.643947
+Train Iter: 33840	Loss_d_metric: 0.637237
+Train Iter: 33860	Loss_d_metric: 0.596099
+Train Iter: 33880	Loss_d_metric: 0.583889
+Train Iter: 33900	Loss_d_metric: 0.633925
+Train Iter: 33920	Loss_d_metric: 0.641347
+Train Iter: 33940	Loss_d_metric: 0.660297
+Train Iter: 33960	Loss_d_metric: 0.615578
+Train Iter: 33980	Loss_d_metric: 0.616371
+
+**** TESTING WITH val ***
+482 correct from 1000 	Accuracy: 48.200%)
+964 correct from 2000 	Accuracy: 48.200%)
+1429 correct from 3000 	Accuracy: 47.633%)
+1905 correct from 4000 	Accuracy: 47.625%)
+2397 correct from 5000 	Accuracy: 47.940%)
+2889 correct from 6000 	Accuracy: 48.150%)
+3379 correct from 7000 	Accuracy: 48.271%)
+3878 correct from 8000 	Accuracy: 48.475%)
+4349 correct from 9000 	Accuracy: 48.322%)
+4857 correct from 10000 	Accuracy: 48.570%)
+5330 correct from 11000 	Accuracy: 48.455%)
+5821 correct from 12000 	Accuracy: 48.508%)
+6301 correct from 13000 	Accuracy: 48.469%)
+6765 correct from 14000 	Accuracy: 48.321%)
+7244 correct from 15000 	Accuracy: 48.293%)
+7244 correct from 15000 	Accuracy: 48.293%)
+*** TEST FINISHED ***
+
+Best test accuracy 49.5733 
+
+Train Iter: 34000	Loss_d_metric: 0.603470
+Train Iter: 34020	Loss_d_metric: 0.626492
+Train Iter: 34040	Loss_d_metric: 0.613686
+Train Iter: 34060	Loss_d_metric: 0.694125
+Train Iter: 34080	Loss_d_metric: 0.599311
+Train Iter: 34100	Loss_d_metric: 0.655704
+Train Iter: 34120	Loss_d_metric: 0.619183
+Train Iter: 34140	Loss_d_metric: 0.630009
+Train Iter: 34160	Loss_d_metric: 0.636715
+Train Iter: 34180	Loss_d_metric: 0.642999
+Train Iter: 34200	Loss_d_metric: 0.662904
+Train Iter: 34220	Loss_d_metric: 0.664155
+Train Iter: 34240	Loss_d_metric: 0.629732
+Train Iter: 34260	Loss_d_metric: 0.646810
+Train Iter: 34280	Loss_d_metric: 0.608678
+Train Iter: 34300	Loss_d_metric: 0.612438
+Train Iter: 34320	Loss_d_metric: 0.603137
+Train Iter: 34340	Loss_d_metric: 0.663550
+Train Iter: 34360	Loss_d_metric: 0.597425
+Train Iter: 34380	Loss_d_metric: 0.607188
+Train Iter: 34400	Loss_d_metric: 0.637512
+Train Iter: 34420	Loss_d_metric: 0.627340
+Train Iter: 34440	Loss_d_metric: 0.637697
+Train Iter: 34460	Loss_d_metric: 0.634363
+Train Iter: 34480	Loss_d_metric: 0.624834
+Train Iter: 34500	Loss_d_metric: 0.599252
+Train Iter: 34520	Loss_d_metric: 0.590208
+Train Iter: 34540	Loss_d_metric: 0.659198
+Train Iter: 34560	Loss_d_metric: 0.636452
+Train Iter: 34580	Loss_d_metric: 0.588399
+Train Iter: 34600	Loss_d_metric: 0.628343
+Train Iter: 34620	Loss_d_metric: 0.616278
+Train Iter: 34640	Loss_d_metric: 0.618152
+Train Iter: 34660	Loss_d_metric: 0.611645
+Train Iter: 34680	Loss_d_metric: 0.621004
+Train Iter: 34700	Loss_d_metric: 0.638921
+Train Iter: 34720	Loss_d_metric: 0.627575
+Train Iter: 34740	Loss_d_metric: 0.651017
+Train Iter: 34760	Loss_d_metric: 0.634834
+Train Iter: 34780	Loss_d_metric: 0.627934
+Train Iter: 34800	Loss_d_metric: 0.586148
+Train Iter: 34820	Loss_d_metric: 0.617685
+Train Iter: 34840	Loss_d_metric: 0.583883
+Train Iter: 34860	Loss_d_metric: 0.638556
+Train Iter: 34880	Loss_d_metric: 0.682029
+Train Iter: 34900	Loss_d_metric: 0.653655
+Train Iter: 34920	Loss_d_metric: 0.604006
+Train Iter: 34940	Loss_d_metric: 0.615682
+Train Iter: 34960	Loss_d_metric: 0.623992
+Train Iter: 34980	Loss_d_metric: 0.636785
+Train Iter: 35000	Loss_d_metric: 0.612309
+Train Iter: 35020	Loss_d_metric: 0.619916
+Train Iter: 35040	Loss_d_metric: 0.628826
+Train Iter: 35060	Loss_d_metric: 0.638433
+Train Iter: 35080	Loss_d_metric: 0.635561
+Train Iter: 35100	Loss_d_metric: 0.588135
+Train Iter: 35120	Loss_d_metric: 0.612785
+Train Iter: 35140	Loss_d_metric: 0.599063
+Train Iter: 35160	Loss_d_metric: 0.634884
+Train Iter: 35180	Loss_d_metric: 0.605472
+Train Iter: 35200	Loss_d_metric: 0.579382
+Train Iter: 35220	Loss_d_metric: 0.620443
+Train Iter: 35240	Loss_d_metric: 0.608775
+Train Iter: 35260	Loss_d_metric: 0.609681
+Train Iter: 35280	Loss_d_metric: 0.626729
+Train Iter: 35300	Loss_d_metric: 0.610117
+Train Iter: 35320	Loss_d_metric: 0.577689
+Train Iter: 35340	Loss_d_metric: 0.581021
+Train Iter: 35360	Loss_d_metric: 0.608219
+Train Iter: 35380	Loss_d_metric: 0.612725
+Train Iter: 35400	Loss_d_metric: 0.590644
+Train Iter: 35420	Loss_d_metric: 0.623499
+Train Iter: 35440	Loss_d_metric: 0.638194
+Train Iter: 35460	Loss_d_metric: 0.650902
+Train Iter: 35480	Loss_d_metric: 0.630709
+Train Iter: 35500	Loss_d_metric: 0.601736
+Train Iter: 35520	Loss_d_metric: 0.595659
+Train Iter: 35540	Loss_d_metric: 0.614163
+Train Iter: 35560	Loss_d_metric: 0.618051
+Train Iter: 35580	Loss_d_metric: 0.630586
+Train Iter: 35600	Loss_d_metric: 0.619224
+Train Iter: 35620	Loss_d_metric: 0.628285
+Train Iter: 35640	Loss_d_metric: 0.646360
+Train Iter: 35660	Loss_d_metric: 0.607560
+Train Iter: 35680	Loss_d_metric: 0.604307
+Train Iter: 35700	Loss_d_metric: 0.613360
+Train Iter: 35720	Loss_d_metric: 0.634816
+Train Iter: 35740	Loss_d_metric: 0.581933
+Train Iter: 35760	Loss_d_metric: 0.621669
+Train Iter: 35780	Loss_d_metric: 0.592063
+Train Iter: 35800	Loss_d_metric: 0.630464
+Train Iter: 35820	Loss_d_metric: 0.608234
+Train Iter: 35840	Loss_d_metric: 0.610610
+Train Iter: 35860	Loss_d_metric: 0.572428
+Train Iter: 35880	Loss_d_metric: 0.601166
+Train Iter: 35900	Loss_d_metric: 0.583253
+Train Iter: 35920	Loss_d_metric: 0.650500
+Train Iter: 35940	Loss_d_metric: 0.637295
+Train Iter: 35960	Loss_d_metric: 0.633463
+Train Iter: 35980	Loss_d_metric: 0.627653
+
+**** TESTING WITH val ***
+481 correct from 1000 	Accuracy: 48.100%)
+980 correct from 2000 	Accuracy: 49.000%)
+1469 correct from 3000 	Accuracy: 48.967%)
+1943 correct from 4000 	Accuracy: 48.575%)
+2410 correct from 5000 	Accuracy: 48.200%)
+2896 correct from 6000 	Accuracy: 48.267%)
+3381 correct from 7000 	Accuracy: 48.300%)
+3863 correct from 8000 	Accuracy: 48.288%)
+4319 correct from 9000 	Accuracy: 47.989%)
+4822 correct from 10000 	Accuracy: 48.220%)
+5302 correct from 11000 	Accuracy: 48.200%)
+5790 correct from 12000 	Accuracy: 48.250%)
+6288 correct from 13000 	Accuracy: 48.369%)
+6769 correct from 14000 	Accuracy: 48.350%)
+7262 correct from 15000 	Accuracy: 48.413%)
+7262 correct from 15000 	Accuracy: 48.413%)
+*** TEST FINISHED ***
+
+Best test accuracy 49.5733 
+
+Train Iter: 36000	Loss_d_metric: 0.631747
+Train Iter: 36020	Loss_d_metric: 0.610865
+Train Iter: 36040	Loss_d_metric: 0.574592
+Train Iter: 36060	Loss_d_metric: 0.593952
+Train Iter: 36080	Loss_d_metric: 0.595690
+Train Iter: 36100	Loss_d_metric: 0.613089
+Train Iter: 36120	Loss_d_metric: 0.610857
+Train Iter: 36140	Loss_d_metric: 0.614307
+Train Iter: 36160	Loss_d_metric: 0.624353
+Train Iter: 36180	Loss_d_metric: 0.608460
+Train Iter: 36200	Loss_d_metric: 0.583072
+Train Iter: 36220	Loss_d_metric: 0.621318
+Train Iter: 36240	Loss_d_metric: 0.623776
+Train Iter: 36260	Loss_d_metric: 0.598477
+Train Iter: 36280	Loss_d_metric: 0.590948
+Train Iter: 36300	Loss_d_metric: 0.582440
+Train Iter: 36320	Loss_d_metric: 0.616012
+Train Iter: 36340	Loss_d_metric: 0.591815
+Train Iter: 36360	Loss_d_metric: 0.599441
+Train Iter: 36380	Loss_d_metric: 0.631033
+Train Iter: 36400	Loss_d_metric: 0.606336
+Train Iter: 36420	Loss_d_metric: 0.606183
+Train Iter: 36440	Loss_d_metric: 0.595709
+Train Iter: 36460	Loss_d_metric: 0.625959
+Train Iter: 36480	Loss_d_metric: 0.615233
+Train Iter: 36500	Loss_d_metric: 0.581001
+Train Iter: 36520	Loss_d_metric: 0.611880
+Train Iter: 36540	Loss_d_metric: 0.593908
+Train Iter: 36560	Loss_d_metric: 0.639971
+Train Iter: 36580	Loss_d_metric: 0.602171
+Train Iter: 36600	Loss_d_metric: 0.613121
+Train Iter: 36620	Loss_d_metric: 0.609619
+Train Iter: 36640	Loss_d_metric: 0.585152
+Train Iter: 36660	Loss_d_metric: 0.594852
+Train Iter: 36680	Loss_d_metric: 0.611784
+Train Iter: 36700	Loss_d_metric: 0.622044
+Train Iter: 36720	Loss_d_metric: 0.576296
+Train Iter: 36740	Loss_d_metric: 0.609025
+Train Iter: 36760	Loss_d_metric: 0.615312
+Train Iter: 36780	Loss_d_metric: 0.619543
+Train Iter: 36800	Loss_d_metric: 0.602878
+Train Iter: 36820	Loss_d_metric: 0.607238
+Train Iter: 36840	Loss_d_metric: 0.609574
+Train Iter: 36860	Loss_d_metric: 0.598229
+Train Iter: 36880	Loss_d_metric: 0.606974
+Train Iter: 36900	Loss_d_metric: 0.581244
+Train Iter: 36920	Loss_d_metric: 0.590896
+Train Iter: 36940	Loss_d_metric: 0.600078
+Train Iter: 36960	Loss_d_metric: 0.654149
+Train Iter: 36980	Loss_d_metric: 0.607942
+Train Iter: 37000	Loss_d_metric: 0.579533
+Train Iter: 37020	Loss_d_metric: 0.611095
+Train Iter: 37040	Loss_d_metric: 0.608929
+Train Iter: 37060	Loss_d_metric: 0.623738
+Train Iter: 37080	Loss_d_metric: 0.594621
+Train Iter: 37100	Loss_d_metric: 0.563547
+Train Iter: 37120	Loss_d_metric: 0.657198
+Train Iter: 37140	Loss_d_metric: 0.608470
+Train Iter: 37160	Loss_d_metric: 0.595517
+Train Iter: 37180	Loss_d_metric: 0.617506
+Train Iter: 37200	Loss_d_metric: 0.600634
+Train Iter: 37220	Loss_d_metric: 0.602816
+Train Iter: 37240	Loss_d_metric: 0.547480
+Train Iter: 37260	Loss_d_metric: 0.597027
+Train Iter: 37280	Loss_d_metric: 0.587018
+Train Iter: 37300	Loss_d_metric: 0.600310
+Train Iter: 37320	Loss_d_metric: 0.593855
+Train Iter: 37340	Loss_d_metric: 0.613496
+Train Iter: 37360	Loss_d_metric: 0.579881
+Train Iter: 37380	Loss_d_metric: 0.607232
+Train Iter: 37400	Loss_d_metric: 0.584988
+Train Iter: 37420	Loss_d_metric: 0.582356
+Train Iter: 37440	Loss_d_metric: 0.626766
+Train Iter: 37460	Loss_d_metric: 0.580805
+Train Iter: 37480	Loss_d_metric: 0.557228
+Train Iter: 37500	Loss_d_metric: 0.614135
+Train Iter: 37520	Loss_d_metric: 0.602310
+Train Iter: 37540	Loss_d_metric: 0.586295
+Train Iter: 37560	Loss_d_metric: 0.611710
+Train Iter: 37580	Loss_d_metric: 0.592155
+Train Iter: 37600	Loss_d_metric: 0.597773
+Train Iter: 37620	Loss_d_metric: 0.606652
+Train Iter: 37640	Loss_d_metric: 0.617767
+Train Iter: 37660	Loss_d_metric: 0.565401
+Train Iter: 37680	Loss_d_metric: 0.594348
+Train Iter: 37700	Loss_d_metric: 0.636699
+Train Iter: 37720	Loss_d_metric: 0.586830
+Train Iter: 37740	Loss_d_metric: 0.593062
+Train Iter: 37760	Loss_d_metric: 0.573442
+Train Iter: 37780	Loss_d_metric: 0.584954
+Train Iter: 37800	Loss_d_metric: 0.559825
+Train Iter: 37820	Loss_d_metric: 0.576572
+Train Iter: 37840	Loss_d_metric: 0.608073
+Train Iter: 37860	Loss_d_metric: 0.578920
+Train Iter: 37880	Loss_d_metric: 0.607264
+Train Iter: 37900	Loss_d_metric: 0.575175
+Train Iter: 37920	Loss_d_metric: 0.549943
+Train Iter: 37940	Loss_d_metric: 0.593321
+Train Iter: 37960	Loss_d_metric: 0.606913
+Train Iter: 37980	Loss_d_metric: 0.587144
+
+**** TESTING WITH val ***
+481 correct from 1000 	Accuracy: 48.100%)
+968 correct from 2000 	Accuracy: 48.400%)
+1465 correct from 3000 	Accuracy: 48.833%)
+1956 correct from 4000 	Accuracy: 48.900%)
+2455 correct from 5000 	Accuracy: 49.100%)
+2957 correct from 6000 	Accuracy: 49.283%)
+3456 correct from 7000 	Accuracy: 49.371%)
+3931 correct from 8000 	Accuracy: 49.138%)
+4411 correct from 9000 	Accuracy: 49.011%)
+4910 correct from 10000 	Accuracy: 49.100%)
+5396 correct from 11000 	Accuracy: 49.055%)
+5883 correct from 12000 	Accuracy: 49.025%)
+6388 correct from 13000 	Accuracy: 49.138%)
+6862 correct from 14000 	Accuracy: 49.014%)
+7394 correct from 15000 	Accuracy: 49.293%)
+7394 correct from 15000 	Accuracy: 49.293%)
+*** TEST FINISHED ***
+
+Best test accuracy 49.5733 
+
+Train Iter: 38000	Loss_d_metric: 0.574900
+Train Iter: 38020	Loss_d_metric: 0.597633
+Train Iter: 38040	Loss_d_metric: 0.587687
+Train Iter: 38060	Loss_d_metric: 0.601730
+Train Iter: 38080	Loss_d_metric: 0.590186
+Train Iter: 38100	Loss_d_metric: 0.582554
+Train Iter: 38120	Loss_d_metric: 0.619550
+Train Iter: 38140	Loss_d_metric: 0.588209
+Train Iter: 38160	Loss_d_metric: 0.585484
+Train Iter: 38180	Loss_d_metric: 0.614470
+Train Iter: 38200	Loss_d_metric: 0.582538
+Train Iter: 38220	Loss_d_metric: 0.605299
+Train Iter: 38240	Loss_d_metric: 0.578682
+Train Iter: 38260	Loss_d_metric: 0.578417
+Train Iter: 38280	Loss_d_metric: 0.581740
+Train Iter: 38300	Loss_d_metric: 0.567562
+Train Iter: 38320	Loss_d_metric: 0.588937
+Train Iter: 38340	Loss_d_metric: 0.579070
+Train Iter: 38360	Loss_d_metric: 0.589632
+Train Iter: 38380	Loss_d_metric: 0.591031
+Train Iter: 38400	Loss_d_metric: 0.610399
+Train Iter: 38420	Loss_d_metric: 0.624853
+Train Iter: 38440	Loss_d_metric: 0.590592
+Train Iter: 38460	Loss_d_metric: 0.609489
+Train Iter: 38480	Loss_d_metric: 0.554302
+Train Iter: 38500	Loss_d_metric: 0.581508
+Train Iter: 38520	Loss_d_metric: 0.580373
+Train Iter: 38540	Loss_d_metric: 0.606331
+Train Iter: 38560	Loss_d_metric: 0.571579
+Train Iter: 38580	Loss_d_metric: 0.599635
+Train Iter: 38600	Loss_d_metric: 0.591263
+Train Iter: 38620	Loss_d_metric: 0.583026
+Train Iter: 38640	Loss_d_metric: 0.590629
+Train Iter: 38660	Loss_d_metric: 0.545727
+Train Iter: 38680	Loss_d_metric: 0.546369
+Train Iter: 38700	Loss_d_metric: 0.580483
+Train Iter: 38720	Loss_d_metric: 0.563105
+Train Iter: 38740	Loss_d_metric: 0.615183
+Train Iter: 38760	Loss_d_metric: 0.600807
+Train Iter: 38780	Loss_d_metric: 0.596473
+Train Iter: 38800	Loss_d_metric: 0.599471
+Train Iter: 38820	Loss_d_metric: 0.595922
+Train Iter: 38840	Loss_d_metric: 0.567319
+Train Iter: 38860	Loss_d_metric: 0.560049
+Train Iter: 38880	Loss_d_metric: 0.594902
+Train Iter: 38900	Loss_d_metric: 0.582578
+Train Iter: 38920	Loss_d_metric: 0.564355
+Train Iter: 38940	Loss_d_metric: 0.589384
+Train Iter: 38960	Loss_d_metric: 0.580390
+Train Iter: 38980	Loss_d_metric: 0.585536
+Train Iter: 39000	Loss_d_metric: 0.562340
+Train Iter: 39020	Loss_d_metric: 0.564650
+Train Iter: 39040	Loss_d_metric: 0.605824
+Train Iter: 39060	Loss_d_metric: 0.572647
+Train Iter: 39080	Loss_d_metric: 0.559732
+Train Iter: 39100	Loss_d_metric: 0.557444
+Train Iter: 39120	Loss_d_metric: 0.607187
+Train Iter: 39140	Loss_d_metric: 0.590923
+Train Iter: 39160	Loss_d_metric: 0.592948
+Train Iter: 39180	Loss_d_metric: 0.590498
+Train Iter: 39200	Loss_d_metric: 0.606703
+Train Iter: 39220	Loss_d_metric: 0.585977
+Train Iter: 39240	Loss_d_metric: 0.617733
+Train Iter: 39260	Loss_d_metric: 0.588782
+Train Iter: 39280	Loss_d_metric: 0.582437
+Train Iter: 39300	Loss_d_metric: 0.557323
+Train Iter: 39320	Loss_d_metric: 0.571678
+Train Iter: 39340	Loss_d_metric: 0.567535
+Train Iter: 39360	Loss_d_metric: 0.549575
+Train Iter: 39380	Loss_d_metric: 0.593723
+Train Iter: 39400	Loss_d_metric: 0.580211
+Train Iter: 39420	Loss_d_metric: 0.551009
+Train Iter: 39440	Loss_d_metric: 0.602746
+Train Iter: 39460	Loss_d_metric: 0.580930
+Train Iter: 39480	Loss_d_metric: 0.540129
+Train Iter: 39500	Loss_d_metric: 0.579184
+Train Iter: 39520	Loss_d_metric: 0.574295
+Train Iter: 39540	Loss_d_metric: 0.574684
+Train Iter: 39560	Loss_d_metric: 0.586193
+Train Iter: 39580	Loss_d_metric: 0.591796
+Train Iter: 39600	Loss_d_metric: 0.542274
+Train Iter: 39620	Loss_d_metric: 0.536694
+Train Iter: 39640	Loss_d_metric: 0.560201
+Train Iter: 39660	Loss_d_metric: 0.609475
+Train Iter: 39680	Loss_d_metric: 0.608013
+Train Iter: 39700	Loss_d_metric: 0.572902
+Train Iter: 39720	Loss_d_metric: 0.598445
+Train Iter: 39740	Loss_d_metric: 0.634532
+Train Iter: 39760	Loss_d_metric: 0.604610
+Train Iter: 39780	Loss_d_metric: 0.607591
+Train Iter: 39800	Loss_d_metric: 0.579833
+Train Iter: 39820	Loss_d_metric: 0.594648
+Train Iter: 39840	Loss_d_metric: 0.587412
+Train Iter: 39860	Loss_d_metric: 0.580751
+Train Iter: 39880	Loss_d_metric: 0.573642
+Train Iter: 39900	Loss_d_metric: 0.577974
+Train Iter: 39920	Loss_d_metric: 0.594242
+Train Iter: 39940	Loss_d_metric: 0.573525
+Train Iter: 39960	Loss_d_metric: 0.588731
+Train Iter: 39980	Loss_d_metric: 0.553152
+
+**** TESTING WITH val ***
+491 correct from 1000 	Accuracy: 49.100%)
+1011 correct from 2000 	Accuracy: 50.550%)
+1502 correct from 3000 	Accuracy: 50.067%)
+1972 correct from 4000 	Accuracy: 49.300%)
+2447 correct from 5000 	Accuracy: 48.940%)
+2929 correct from 6000 	Accuracy: 48.817%)
+3395 correct from 7000 	Accuracy: 48.500%)
+3905 correct from 8000 	Accuracy: 48.812%)
+4390 correct from 9000 	Accuracy: 48.778%)
+4896 correct from 10000 	Accuracy: 48.960%)
+5408 correct from 11000 	Accuracy: 49.164%)
+5925 correct from 12000 	Accuracy: 49.375%)
+6420 correct from 13000 	Accuracy: 49.385%)
+6905 correct from 14000 	Accuracy: 49.321%)
+7396 correct from 15000 	Accuracy: 49.307%)
+7396 correct from 15000 	Accuracy: 49.307%)
+*** TEST FINISHED ***
+
+Best test accuracy 49.5733 
